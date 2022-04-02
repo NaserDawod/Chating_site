@@ -1,0 +1,49 @@
+.back-top{
+    background-color:  #009688;
+    height: 25vh;
+}
+   
+.back-main{
+    background-color:  #D9DBD5;
+    height: 75vh;
+}
+.back-container{
+    position: relative;
+}
+.front-container{
+    position: absolute;
+    top:0;
+    left:0;
+    right: 0;
+}
+
+.front-container1{
+    position: absolute;
+    top:20px;
+    left:0;
+    right: 0;
+}
+.ddsd{
+    position: absolute;
+    top:20px;
+}
+.chat-top{
+    background-color: #f1eded;
+    min-height: 250px;
+}
+.login-top{
+    background-color: #f1eded;
+    min-height:25px;
+}
+.contact-table-scroll{
+    overflow-y: scroll;
+    height: 500px;
+}
+.contacts{
+background-color: #ffffff;
+min-height: 500px;
+}
+.imgs {
+    height: 50px;
+}
+
