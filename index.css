@@ -43,7 +43,15 @@
 background-color: #ffffff;
 min-height: 500px;
 }
-.imgs {
-    height: 50px;
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 500px;
+    /* overflow: auto; */
+    max-width: 100%;
+    overflow-x: hidden;
+}
+    .table-wrapper-scroll-y {
+    display: block;
 }
 
