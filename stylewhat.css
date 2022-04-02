@@ -1,0 +1,25 @@
+.back-top{
+background-color: mediumseagreen;
+height: 25vh;
+}
+
+.back-main{
+    background-color: whitesmoke;
+    height: 85vh;
+    }
+
+.chat-top{
+    background-color: #EDEDED;
+    min-height: 200px;
+}
+    
+.login-top{
+    background-color: #EDEDED;
+    min-height: 20px;
+}
+.front-container1{
+    position: absolute;
+    top:20px;
+    left:0;
+    right: 0;
+}
