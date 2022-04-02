@@ -51,7 +51,17 @@ min-height: 500px;
     max-width: 100%;
     overflow-x: hidden;
 }
-    .table-wrapper-scroll-y {
+.table-wrapper-scroll-y {
     display: block;
 }
 
+.profileimage{
+    width: 50px;
+    border-radius: 50%;
+    margin:5px;
+
+}
+
+.bi bi-person-plus{
+    padding:;
+}
