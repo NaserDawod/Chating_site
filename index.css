@@ -41,12 +41,12 @@
 }
 .contacts{
 background-color: #ffffff;
-min-height: 500px;
+min-height: 480px;
 }
 
 .my-custom-scrollbar {
     position: relative;
-    height: 500px;
+    height: 480px;
     /* overflow: auto; */
     max-width: 100%;
     overflow-x: hidden;
