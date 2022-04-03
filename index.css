@@ -62,6 +62,13 @@ min-height: 500px;
 
 }
 
-.bi bi-person-plus{
-    padding:;
+.bi{
+    margin-left:140px;
+    width: 24px ;
+    height: 24px ;
+}
+
+.placeee {
+	position: relative;
+	margin-inline-end: auto;
 }
