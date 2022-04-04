@@ -19,7 +19,7 @@ class contact{
     }
 }
 
-var contacts = []
+let contacts = []
 contacts.push(new contact("bhem1", "123"))
 contacts.push(new contact("bhem2", "123"))
 contacts.push(new contact("bhem3", "123"))
@@ -46,19 +46,20 @@ contacts.push(new contact("bhem5", "123"))
 //                     "</a>")
 // });
 
-contacts.forEach(elem =>{
-    document.write("<a href=\"LogInPage.html\" class=\"list-group-item list-group-item-action\">" + 
-                    "<div class=\"d-flex justify-content-between\">" +
-                        "<img src=\"images.jpg\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:40px;\">" +
-                            "<div class=\"placeee\">" + 
-                                "<h4 class=\"mb-1\">bhem2</h4>" + 
-                                "<p class=\"mb-1\">message</p>" +
+
+
+function printContacts(contacts) {
+    contacts.forEach(elem =>{
+        document.write("<a href=\"\" class=\"list-group-item list-group-item-action\">" + 
+                            "<div class=\"d-flex justify-content-between\">" +
+                                "<img src=\"images.jpg\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:40px;\">" +
+                                "<div class=\"placeee\">" + 
+                                    "<h6 class=\"mb-1\">" + elem.getname() + "</h6>" + 
+                                    "<p class=\"mb-1\">message</p>" +
                                 "</div>" + 
-                            "<small class=\"text-muted\">3 days ago</small>" + 
+                                "<small class=\"text-muted\">3 days ago</small>" + 
                             "</div>" +
-                    "</a>")
-});
-
-
-
+                        "</a>")
+    });
+}
 
