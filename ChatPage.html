@@ -35,8 +35,8 @@
                   </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="">Close</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="addContact(contacts)">Understood</button>
             </div>
           </div>
         </div>
@@ -66,14 +66,14 @@
                 <div class="span-s"></div>
             </div>
 
-            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <div id="contact_div" class="table-wrapper-scroll-y my-custom-scrollbar">
                 <table class="table table-bordered table-striped mb-0">
                     <script type="text/javascript"> printContacts(contacts) </script>
                 </table>
             </div>
 
         </div>
-        <div class="col-7">
+        <div class="col-8">
         </div>
     </div>
 
