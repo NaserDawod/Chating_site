@@ -19,24 +19,24 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <h5 class="modal-title" id="staticBackdropLabel">Add Contacts</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label">Recipient:</label>
-                      <input type="text" class="form-control" id="recipient-name">
+                      <label for="recipient-name" class="col-form-label">Username:</label>
+                      <input type="text" class="form-control" id="Username" onfocus="this.value=''">
                     </div>
                     <div class="mb-3">
-                      <label for="message-text" class="col-form-label">Message:</label>
-                      <textarea class="form-control" id="message-text"></textarea>
+                        <label for="formFile" class="form-label">Default file input example</label>
+                        <input class="form-control" type="file" id="img-input" accept="image/png, image/jpeg,image/jpg">
                     </div>
                   </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="">Close</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="addContact(contacts)">Understood</button>
             </div>
           </div>
         </div>
@@ -66,14 +66,14 @@
                 <div class="span-s"></div>
             </div>
 
-            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <div id="contact_div" class="table-wrapper-scroll-y my-custom-scrollbar">
                 <table class="table table-bordered table-striped mb-0">
                     <script type="text/javascript"> printContacts(contacts) </script>
                 </table>
             </div>
 
         </div>
-        <div class="col-7">
+        <div class="col-8">
         </div>
     </div>
 
