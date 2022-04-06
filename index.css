@@ -169,12 +169,11 @@ max-height: max-content;
 
  .personalchat{
      width: 100%;
-     height: 73%;
+     height: 80%;
  }
 
  .writehere{
     width: 100%;
-    height: 7%;
  }
  .backchat{
      width: 100%;
@@ -209,12 +208,11 @@ max-height: max-content;
     height: 25px;
 }
 .Typehere{
-    top: 20px;
 }
 
 .iconsandinput{
 width: 100%;
-
+top: 20px;
 }
 
 
