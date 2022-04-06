@@ -23,7 +23,7 @@ class contact{
     }
 }
 
-let contacts = []
+var contacts = []
 contacts.push(new contact("bhem1", "123", "images.jpg"))
 contacts.push(new contact("bhem2", "123", "images.jpg"))
 contacts.push(new contact("bhem3", "123", "images.jpg"))
@@ -50,11 +50,26 @@ contacts.push(new contact("bhem5", "123", "images.jpg"))
 //                     "</a>")
 // });
 
+function showMessages(i){
+    let elem = document.getElementById('messages')
+    let user = contacts[i]
+    elem.innerHTML = "<div class=\"bg-light\">" + 
+                        "<img src=\"images.jpg\" class=\"profileimage\">" +
+                        "<span clas=\"d-flex\">" + user.getname() + "</span>" +
+                            "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">" +
+                                "<path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z\"/>" +
+                            "</svg>" +
+                        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-three-dots-vertical\" viewBox=\"0 0 16 16\">" + 
+                            "<path d=\"M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z\"/>" +
+                        "</svg>" +
+                    "</div>"
+}
 
 
 function printContacts(contacts) {
+    let i = 0
     contacts.forEach(elem =>{
-        document.write("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages()\">" + 
+        document.write("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages("+ i +")\">" + 
                             "<img src=\"" + elem.getimg() + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:50px;\">" +
                             "<div class=\"w-50\">" +
                                 "<h5 class=\"mb-1\">" + elem.getname() + "</h5>" +
@@ -64,6 +79,7 @@ function printContacts(contacts) {
                                 "<div class=\"small time\">15:41</div>" + 
                             "</div>" +
                         "</div>")
+        i += 1
     });
 }
 
@@ -93,11 +109,17 @@ function addContact(contacts){
 }
 
 
-function showMessages(){
-    let elem = document.getElementById('messages')
-    // elem.innerHTML = 
-}
 
+// "<div class=\"bg-light\">" + 
+//                         "<img src=\"images.jpg\" class=\"profileimage\">" +
+//                         "<span clas=\"d-flex\">" + "bheadasd" + "</span>" +
+//                             "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">" +
+//                                 "<path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z\"/>" +
+//                             "</svg>" +
+//                         "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-three-dots-vertical\" viewBox=\"0 0 16 16\">" + 
+//                             "<path d=\"M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z\"/>" +
+//                         "</svg>" +
+//                     "</div>"
 
 // "<a href=\"\" class=\"list-group-item list-group-item-action\">" + 
 //                     "<div class=\"d-flex justify-content-between\">" +
