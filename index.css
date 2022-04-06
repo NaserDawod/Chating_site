@@ -150,11 +150,15 @@ max-height: max-content;
  .bi-search{
      width: 16px;
      height: 16px;
-     margin-left: 730px;
- }
+     position: absolute;
+     top: 10px;
+     right: 40px;
+}
 
  .bi-three-dots-vertical{
     width: 16px;
     height: 16px;
-    margin-left: 730px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
  }
