@@ -134,7 +134,7 @@ padding: 10px;
     background:url(background.jpg);
     overflow:inherit;
     /* height: 100vh; */
-    min-height: 75vh;
+    min-height: 77.7vh;
 }
 
 .chatt {
@@ -181,7 +181,7 @@ max-height: max-content;
  }
 
  .form-control{
-     width: 70%;
+     width: 100%;
  }
 
 
@@ -206,8 +206,6 @@ max-height: max-content;
     cursor: pointer;
     width: 25px;
     height: 25px;
-}
-.Typehere{
 }
 
 .iconsandinput{
