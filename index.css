@@ -156,17 +156,17 @@ max-height: max-content;
  }
 
  .bi-search{
-     width: 16px;
-     height: 16px;
+     width: 20px;
+     height: 20px;
      position: absolute;
-     top: 10px;
+     top: 20px;
      right: 40px;
 }
 
  .bi-three-dots-vertical{
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     position: absolute;
-    top: 10px;
+    top: 20px;
     right: 15px;
  }
