@@ -50,6 +50,19 @@ contacts.push(new contact("bhem5", "123", "images.jpg"))
 //                     "</a>")
 // });
 
+let message = "<div class=\"align-self-end self p-1 my-1 mx-3 rounded bg-white shadow-sm message-item\">"
+                    "<div class=\"options\">" +
+                        "<a href=\"#\"><i class=\"fas fa-angle-down text-muted px-2\"></i></a>" +
+                    "</div>" +
+                    "<div class=\"d-flex flex-row\">" +
+                        "<div class=\"body m-1 mr-2\">if you go to the movie, then give me a call</div>" +
+                        "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">" +
+                            "22:41" +
+                            "<i class=\"fas fa-check-circle\"></i>" +
+                        "</div>" +
+                    "</div>" +
+               "</div>"
+
 function showMessages(i){
     let elem = document.getElementById('messages')
     let user = contacts[i]
