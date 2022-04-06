@@ -131,8 +131,10 @@ padding: 10px;
 
 .chat-de {
     flex: 1!important;
-    background: hsl(0, 0%, 80%);
-    overflow: auto;
+    background:url(background.jpg);
+    overflow:inherit;
+    /* height: 100vh; */
+    min-height: 75vh;
 }
 
 .chatt {
@@ -140,6 +142,15 @@ max-width: fit-content;
 max-height: max-content;
  }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-track {
+    background: none;
+}
  .bi-search{
      width: 20px;
      height: 20px;
@@ -173,3 +184,8 @@ max-height: max-content;
  .form-control{
      width: 70%;
  }
+
+
+.ttt {
+    margin: -10px;
+}
