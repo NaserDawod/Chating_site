@@ -120,6 +120,14 @@ padding: 10px;
     margin-left: 370px;
 }
 
+.chat-list-item {
+	background: white;
+	cursor: pointer;
+}
+
+.chat-list-item:hover {
+	background: hsl(0, 2%, 92%);
+}
 
  /* .rightSide{
     position:inherit; 
