@@ -185,6 +185,32 @@ max-height: max-content;
      height:100% ;
  }
 
- .form-control{
-     width: 70%;
- }
+ .bi-emoji-laughing{
+        all: unset;
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+}
+
+.bi-paperclip{
+    all: unset;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+.bi-mic{
+    all: unset;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+.Typehere{
+    top: 20px;
+}
+
+.iconsandinput{
+width: 100%;
+
+}
+
+
