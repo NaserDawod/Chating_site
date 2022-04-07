@@ -31,22 +31,34 @@ class contact{
     }
 }
 
-var contacts = []
-contacts.push(new contact("bhem1", "images.jpg"))
-contacts.push(new contact("bhem2", "images.jpg"))
-contacts.push(new contact("bhem3", "images.jpg"))
-contacts.push(new contact("bhem4", "images.jpg"))
-contacts.push(new contact("bhem5", "images.jpg"))
-contacts.push(new contact("bhem1", "images.jpg"))
-contacts.push(new contact("bhem2", "images.jpg"))
-contacts.push(new contact("bhem3", "images.jpg"))
-contacts.push(new contact("bhem4", "images.jpg"))
-contacts.push(new contact("bhem5", "images.jpg"))
-contacts.push(new contact("bhem1", "images.jpg"))
-contacts.push(new contact("bhem2", "images.jpg"))
-contacts.push(new contact("bhem3", "images.jpg"))
-contacts.push(new contact("bhem4", "images.jpg"))
-contacts.push(new contact("bhem5", "images.jpg"))
+// var contacts = []
+contacts_map = {}
+contacts_map["bhem1"] = new contact("bhem1", "images.jpg")
+contacts_map["bhem2"] = new contact("bhem1", "images.jpg")
+contacts_map["bhem3"] = new contact("bhem1", "images.jpg")
+contacts_map["bhem4"] = new contact("bhem1", "images.jpg")
+contacts_map["bhem5"] = new contact("bhem1", "images.jpg")
+contacts_map["bhem6"] = new contact("bhem1", "images.jpg")
+contacts_map["bhem7"] = new contact("bhem1", "images.jpg")
+contacts_map["bhem8"] = new contact("bhem1", "images.jpg")
+contacts_map["bhem9"] = new contact("bhem1", "images.jpg")
+contacts_map["bhem10"] = new contact("bhem1", "images.jpg")
+
+// contacts.push(new contact("bhem1", "images.jpg"))
+// contacts.push(new contact("bhem2", "images.jpg"))
+// contacts.push(new contact("bhem3", "images.jpg"))
+// contacts.push(new contact("bhem4", "images.jpg"))
+// contacts.push(new contact("bhem5", "images.jpg"))
+// contacts.push(new contact("bhem1", "images.jpg"))
+// contacts.push(new contact("bhem2", "images.jpg"))
+// contacts.push(new contact("bhem3", "images.jpg"))
+// contacts.push(new contact("bhem4", "images.jpg"))
+// contacts.push(new contact("bhem5", "images.jpg"))
+// contacts.push(new contact("bhem1", "images.jpg"))
+// contacts.push(new contact("bhem2", "images.jpg"))
+// contacts.push(new contact("bhem3", "images.jpg"))
+// contacts.push(new contact("bhem4", "images.jpg"))
+// contacts.push(new contact("bhem5", "images.jpg"))
 
 // contacts.forEach(elem =>{
 //     document.write("<a href=\"#\" class=\"list-group-item list-group-item-action\">" +
@@ -112,10 +124,10 @@ function showMessages(i){
 function sendMessage() {
     let message = document.getElementById('typem').value
     document.getElementById('typem').value = ''
-    let contactn = document.getElementById('contact_name').value
-    console.log(contactn.innerText)
+    let contactn = document.getElementById('contact_name')
     var today = new Date();
     var time = today.getHours() + ":" + today.getMinutes();
+    contacts_map[contactn].addmessage(contactn, time, message)
     if((message.trim()).length===0){
         return
     }else{
@@ -135,19 +147,22 @@ function sendMessage() {
 
 function printContacts(contacts) {
     let i = 0
-    contacts.forEach(elem =>{
-        document.write("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages("+ i +")\">" + 
-                            "<img src=\"" + elem.getimg() + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:50px;\">" +
-                            "<div class=\"w-50\">" +
-                                "<h5 class=\"mb-1\">" + elem.getname() + "</h5>" +
-                                "<p class=\"mb-1\">message</p>" +
-                            "</div>" +
-                            "<div class=\"flex-grow-1 text-right\">" +
-                                "<div class=\"small time\">15:41</div>" + 
-                            "</div>" +
-                        "</div>")
-        i += 1
+    contacts_map.forEach(elem=>{
+        console.log(elem.Date)
     });
+    // contacts.forEach(elem =>{
+    //     document.write("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages("+ i +")\">" + 
+    //                         "<img src=\"" + elem.getimg() + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:50px;\">" +
+    //                         "<div class=\"w-50\">" +
+    //                             "<h5 class=\"mb-1\">" + elem.getname() + "</h5>" +
+    //                             "<p class=\"mb-1\">message</p>" +
+    //                         "</div>" +
+    //                         "<div class=\"flex-grow-1 text-right\">" +
+    //                             "<div class=\"small time\">15:41</div>" + 
+    //                         "</div>" +
+    //                     "</div>")
+    //     i += 1
+    // });
 }
 
 function addContact(contacts){
