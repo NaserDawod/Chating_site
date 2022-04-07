@@ -101,7 +101,7 @@ function showMessages(i){
 }
 
 function sendMessage() {
-    console.log("Asdjoasnfdkhbf")
+
 }
 
 
