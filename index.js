@@ -34,15 +34,15 @@ class contact{
 // var contacts = []
 contacts_map = {}
 contacts_map["bhem1"] = new contact("bhem1", "images.jpg")
-contacts_map["bhem2"] = new contact("bhem1", "images.jpg")
-contacts_map["bhem3"] = new contact("bhem1", "images.jpg")
-contacts_map["bhem4"] = new contact("bhem1", "images.jpg")
-contacts_map["bhem5"] = new contact("bhem1", "images.jpg")
-contacts_map["bhem6"] = new contact("bhem1", "images.jpg")
-contacts_map["bhem7"] = new contact("bhem1", "images.jpg")
-contacts_map["bhem8"] = new contact("bhem1", "images.jpg")
-contacts_map["bhem9"] = new contact("bhem1", "images.jpg")
-contacts_map["bhem10"] = new contact("bhem1", "images.jpg")
+contacts_map["bhem2"] = new contact("bhem2", "images.jpg")
+contacts_map["bhem3"] = new contact("bhem3", "images.jpg")
+contacts_map["bhem4"] = new contact("bhem4", "images.jpg")
+contacts_map["bhem5"] = new contact("bhem5", "images.jpg")
+contacts_map["bhem6"] = new contact("bhem6", "images.jpg")
+contacts_map["bhem7"] = new contact("bhem7", "images.jpg")
+contacts_map["bhem8"] = new contact("bhem8", "images.jpg")
+contacts_map["bhem9"] = new contact("bhem9", "images.jpg")
+contacts_map["bhem10"] = new contact("bhem10", "images.jpg")
 
 // contacts.push(new contact("bhem1", "images.jpg"))
 // contacts.push(new contact("bhem2", "images.jpg"))
@@ -89,7 +89,7 @@ function readMessage(){
 
 function showMessages(i){
     let elem = document.getElementById('messages')
-    let user = contacts[i]
+    let user = contacts_map[i]
     elem.innerHTML = "<div class=\"bg-light\">" + 
                         "<img src=\"images.jpg\" class=\"profileimage\">" +
                         "<span id=\"contact_name\" clas=\"d-flex\">" + user.getname() + "</span>" +
@@ -115,7 +115,7 @@ function showMessages(i){
                             "<div onclick=\"sendMessage()\">"+
                             "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-send-fill\" viewBox=\"0 0 16 16\">"+
                                 "<path d=\"M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z\">"+
-                              "</svg>"+
+                              "</svg>" +
                             "</div>" +
                         "</span>" +
                     "</div>"
@@ -124,32 +124,42 @@ function showMessages(i){
 function sendMessage() {
     let message = document.getElementById('typem').value
     document.getElementById('typem').value = ''
-    let contactn = document.getElementById('contact_name')
+    let name = document.getElementById('contact_name').innerText
     var today = new Date();
     var time = today.getHours() + ":" + today.getMinutes();
-    contacts_map[contactn].addmessage(contactn, time, message)
+    contacts_map[name].addmessage(name, time, message)
     if((message.trim()).length===0){
         return
     }else{
-    let elem = document.getElementById('chat_p')
-    elem.innerHTML += "<div class=\"align-self-end self p-1 my-1 mx-3 rounded bg-white shadow-sm message-item\">"+          
-                    "<div class=\"d-flex flex-row\">"+
-                        "<div class=\"body m-1 mr-2\">"+ message +"</div>"+
-                        "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
-                            time +
-                            "<i class=\"fas fa-check-circle\"></i>"+
+        let elem = document.getElementById('chat_p')
+        elem.innerHTML += "<div class=\"align-self-end self p-1 my-1 mx-3 rounded bg-white shadow-sm message-item\">"+          
+                        "<div class=\"d-flex flex-row\">"+
+                            "<div class=\"body m-1 mr-2\">"+ message +"</div>"+
+                            "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
+                                time +
+                                "<i class=\"fas fa-check-circle\"></i>"+
+                            "</div>"+
                         "</div>"+
-                    "</div>"+
-                "</div>"
+                    "</div>"
     }
 }
 
 
 function printContacts(contacts) {
     let i = 0
-    contacts_map.forEach(elem=>{
-        console.log(elem.Date)
-    });
+    for (const [key, user] of Object.entries(contacts)) {
+        document.write("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages("+ "\'" +key+ "\'" +")\">" + 
+                            "<img src=\"" + user.getimg() + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:50px;\">" +
+                            "<div class=\"w-50\">" +
+                                "<h5 class=\"mb-1\">" + user.getname() + "</h5>" +
+                                "<p class=\"mb-1\">message</p>" +
+                            "</div>" +
+                            "<div class=\"flex-grow-1 text-right\">" +
+                                "<div class=\"small time\">15:41</div>" + 
+                            "</div>" +
+                        "</div>")
+        i += 1
+    }
     // contacts.forEach(elem =>{
     //     document.write("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages("+ i +")\">" + 
     //                         "<img src=\"" + elem.getimg() + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:50px;\">" +
