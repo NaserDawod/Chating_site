@@ -100,6 +100,10 @@ function showMessages(i){
                     "</div>"
 }
 
+function sendMessage() {
+    console.log("Asdjoasnfdkhbf")
+}
+
 
 function printContacts(contacts) {
     let i = 0
