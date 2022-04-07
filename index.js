@@ -50,18 +50,22 @@ contacts.push(new contact("bhem5", "123", "images.jpg"))
 //                     "</a>")
 // });
 
-let message = "<div class=\"align-self-end self p-1 my-1 mx-3 rounded bg-white shadow-sm message-item\">"
-                    "<div class=\"options\">" +
-                        "<a href=\"#\"><i class=\"fas fa-angle-down text-muted px-2\"></i></a>" +
-                    "</div>" +
-                    "<div class=\"d-flex flex-row\">" +
-                        "<div class=\"body m-1 mr-2\">if you go to the movie, then give me a call</div>" +
-                        "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">" +
-                            "22:41" +
-                            "<i class=\"fas fa-check-circle\"></i>" +
-                        "</div>" +
-                    "</div>" +
-               "</div>"
+// var message = "<div class=\"align-self-end self p-1 my-1 mx-3 rounded bg-white shadow-sm message-item\">"
+//                     "<div class=\"d-flex flex-row\">" +
+//                         "<div class=\"body m-1 mr-2\">if you go to the movie, then give me a call</div>" +
+//                         "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">" +
+//                             "22:41" +
+//                             "<i class=\"fas fa-check-circle\"></i>" +
+//                         "</div>" +
+//                     "</div>" +
+//                "</div>"
+
+function readMessage(){
+    str = "<div class=\"mx-auto my-2 bg-primary text-white small py-1 px-2 rounded\">"+
+            "27/03/2018"+
+        "</div>"
+    return str
+}
 
 function showMessages(i){
     let elem = document.getElementById('messages')
@@ -76,7 +80,7 @@ function showMessages(i){
                             "<path d=\"M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z\"/>" +
                         "</svg>" +
                     "</div>" +
-                    "<div class=\"d-flex flex-column chat-de  overlay\" id=\"\">" +
+                    "<div class=\"d-flex flex-column chat-de  overlay\" id=\"\">" + readMessage() +
                     "</div>" +
                     "<div class=\"input-group Typehere\">" +
                         "<span class=\"input-group-text iconsandinput\">" +
