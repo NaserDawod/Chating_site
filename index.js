@@ -32,7 +32,7 @@ class contact{
 }
 
 // var contacts = []
-contacts_map = {}
+var contacts_map = {}
 contacts_map["bhem1"] = new contact("bhem1", "images.jpg")
 contacts_map["bhem2"] = new contact("bhem2", "images.jpg")
 contacts_map["bhem3"] = new contact("bhem3", "images.jpg")

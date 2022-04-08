@@ -134,7 +134,7 @@ padding: 10px;
     background:url(background.jpg);
     overflow:inherit;
     /* height: 100vh; */
-    min-height: 77.7vh;
+    min-height: 80.5vh;
 }
 
 .chatt {
@@ -213,4 +213,21 @@ width: 100%;
 top: 20px;
 }
 
+.right-pad {
+    padding-right: 0;
+    padding-left: 0;
+}
 
+.left-pad {
+    padding-right: 0;
+    padding-left: 0;
+}
+.row {
+    --bs-gutter-x: 1;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(var(--bs-gutter-y) * -1);
+    margin-right: calc(var(--bs-gutter-x)/ -2);
+    margin-left: calc(var(--bs-gutter-x)/ -2);
+}
