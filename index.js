@@ -208,23 +208,21 @@ function addContact(contacts){
     let img = document.getElementById('img-input').value
     document.getElementById('Username').value = ''
     console.log(img)
-    contacts.push(new contact(name, img))
+    contacts_map[name] = new contact(name, img)
     let elem = document.getElementById('contact_div')
     str = ""
-    i = 0
-    contacts.forEach(elem =>{
-        str += ("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages("+ i +")\">" + 
-                            "<img src=\"" + elem.getimg() + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:50px;\">" +
+    for (const [key, user] of Object.entries(contacts)) {
+        str += ("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages("+ "\'" +key+ "\'" +")\">" + 
+                            "<img src=\"" + user.getimg() + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:50px;\">" +
                             "<div class=\"w-50\">" +
-                                "<h5 class=\"mb-1\">" + elem.getname() + "</h5>" +
-                                "<p class=\"mb-1\">message</p>" +
+                                "<h5 class=\"mb-1\">" + user.getname() + "</h5>" +
+                                "<p class=\"mb-1\" id=\""+ key +"-m\">message</p>" +
                             "</div>" +
                             "<div class=\"flex-grow-1 text-right\">" +
-                                "<div class=\"small time\">15:41</div>" + 
+                                "<div class=\"small time\" id=\""+ key +"-t\">15:41</div>" + 
                             "</div>" +
                         "</div>")
-        i += 1
-    });
+    }
     elem.innerHTML = "<table class=\"table table-bordered table-striped mb-0\">" + 
                         str +
                      "</table>"

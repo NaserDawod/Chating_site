@@ -63,9 +63,13 @@ min-height: 475px;
 }
 
 .bi{
-    margin-left:140px;
-    width: 24px ;
-    height: 24px ;
+    /* margin-left: 60vh; */
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    float: right;
+    margin-block-start: 22px;
+    margin-right: 20px;
 }
 
 .placeee {
@@ -75,7 +79,7 @@ min-height: 475px;
 
 .form-s {
     background-color: rgb(228 228 228);
-    width: 390px;
+    width: 95%;
     height: 40px;
     border-radius: 15px;
     display: flex;
@@ -112,9 +116,9 @@ height: 40px;
 padding: 10px;
 }
 
-.icon_place {
+/* .icon_place {
     margin-left: 240px;
-}
+} */
 
 .btn_place {
     margin-left: 370px;
@@ -182,6 +186,7 @@ max-height: max-content;
 
  .form-control{
      width: 100%;
+     border-radius: 10px;
  }
 
 
@@ -189,10 +194,11 @@ max-height: max-content;
     margin: -10px;
 }
  .bi-emoji-laughing{
-        all: unset;
-        cursor: pointer;
-        width: 25px;
-        height: 25px;
+    all: unset;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    padding-right: 3px;
 }
 
 .bi-paperclip{
@@ -200,22 +206,29 @@ max-height: max-content;
     cursor: pointer;
     width: 25px;
     height: 25px;
+    padding-right: 5px;
 }
 .bi-send-fill{
     all: unset;
     cursor: pointer;
     width: 20px;
     height: 20px;
+    padding-left: 5px!important;
 }
 
 .iconsandinput{
-width: 100%;
-top: 20px;
+    width: 100%;
+    top: 20px;
+    border-radius: 0px;
+    background-color: #f0f2f5;
 }
 
 .right-pad {
     padding-right: 0;
     padding-left: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 .greenbackground{
     background-color: rgb(178, 252, 178);
@@ -234,4 +247,17 @@ top: 20px;
     margin-top: calc(var(--bs-gutter-y) * -1);
     margin-right: calc(var(--bs-gutter-x)/ -2);
     margin-left: calc(var(--bs-gutter-x)/ -2);
+}
+
+div#contact_div {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+div#search {
+    padding-bottom: 6px;
+    padding-top: 6px;
+    border-bottom: 0.1vh solid lightgray;
 }
