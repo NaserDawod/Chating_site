@@ -30,13 +30,14 @@
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Default file input example</label>
-                        <input class="form-control" type="file" id="img-input" accept="image/png, image/jpeg,image/jpg">
+                        <input class="form-control" type="file" id="upload" accept="image/png, image/jpeg,image/jpg" />
+                        <img id="display-image"  width = 200px src="" />
                     </div>
                   </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="">Close</button>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="addContact(contacts)">Understood</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="addContact(contacts_map)">Understood</button>
             </div>
           </div>
         </div>

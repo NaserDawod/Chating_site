@@ -35,7 +35,7 @@ class contact{
 }
 
 // var contacts = []
-var contacts_map = {}
+contacts_map = {}
 contacts_map["bhem1"] = new contact("bhem1", "images.jpg")
 contacts_map["bhem2"] = new contact("bhem2", "images.jpg")
 contacts_map["bhem3"] = new contact("bhem3", "images.jpg")
@@ -135,9 +135,39 @@ function showMessages(i){
                                 "<path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>" + 
                                 "<path d=\"M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z\"/>" +
                             "</svg>" +
+                            // "<ul class=\"dropup iconsandinput\">"+
+                            "<button class=\"dropup\">"+
                             "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-paperclip\" viewBox=\"0 0 16 16\">" +
-                                "<path d=\"M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z\"/>" +
-                            "</svg>" +
+                            "<path d=\"M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z\"/>" +
+                            "</svg>"+
+                            "<div class=\"dropup-content\">"+
+                                "<div class=\"clipdivs\">"+
+                                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person biclips\" viewBox=\"0 0 16 16\">"+
+                                "<path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>"+
+                                "</svg>"+
+                                "</div>"+
+                                "<div>"+
+                                "<div>"+
+                                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-file-earmark biclips\" viewBox=\"0 0 16 16\">"+
+                                "<path d=\"M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z\"/>"+
+                                "</svg>"+
+                                "</div>"+
+                                "<div>"+
+                                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-camera biclips\" viewBox=\"0 0 16 16\">"+
+                                "<path d=\"M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z\"/>"+
+                                "<path d=\"M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z\"/>"+
+                                "</svg>"+
+                                "</div>"+
+                                "<div>"+
+                                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-image biclips\" viewBox=\"0 0 16 16\">"+
+                                "<path d=\"M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z\"/>"+
+                                "<path d=\"M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z\"/>"+
+                                "</svg>"+
+                                "</div>"+
+                                "</div>"+
+                            "</button>"+
+
+                            // "<ul/>"+
                             "<input type=\"text\" class=\"form-control\" aria-label=\"Amount (to the nearest dollar)\" placeholder=\"Type a message\" id=\"typem\">" +
                             "<div onclick=\"sendMessage()\">"+
                             "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-send-fill\" viewBox=\"0 0 16 16\">"+
@@ -170,13 +200,12 @@ function sendMessage() {
                     "</div>"
         document.getElementById(name+'-t').innerText = time
         document.getElementById(name+'-m').innerText = message
-
     }
 }
 
 
 function printContacts(contacts) {
-    for (const [key, user] of Object.entries(contacts)) {
+    for (const [key, user] of Object.entries(contacts_map)) {
         document.write("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages("+ "\'" +key+ "\'" +")\">" + 
                             "<img src=\"" + user.getimg() + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:50px;\">" +
                             "<div class=\"w-50\">" +
@@ -205,18 +234,17 @@ function printContacts(contacts) {
 
 function addContact(contacts){
     let name = document.getElementById('Username').value
-    let img = document.getElementById('img-input').value
+    let img = document.getElementById('upload').value
     document.getElementById('Username').value = ''
-    console.log(img)
-    contacts.push(new contact(name, img))
+    contacts_map[name]= new contact(name, img)
     let elem = document.getElementById('contact_div')
     str = ""
     i = 0
-    contacts.forEach(elem =>{
+    for (const [key, user] of Object.entries(contacts_map)) {
         str += ("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages("+ i +")\">" + 
-                            "<img src=\"" + elem.getimg() + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:50px;\">" +
+                            "<img src=\"" + contacts_map[key].getimg() + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:50px;\">" +
                             "<div class=\"w-50\">" +
-                                "<h5 class=\"mb-1\">" + elem.getname() + "</h5>" +
+                                "<h5 class=\"mb-1\">" + contacts_map[key].getname() + "</h5>" +
                                 "<p class=\"mb-1\">message</p>" +
                             "</div>" +
                             "<div class=\"flex-grow-1 text-right\">" +
@@ -224,13 +252,35 @@ function addContact(contacts){
                             "</div>" +
                         "</div>")
         i += 1
-    });
+    }
     elem.innerHTML = "<table class=\"table table-bordered table-striped mb-0\">" + 
                         str +
                      "</table>"
 }
 
+// function readURL(input) {
+//     if (input.files && input.files[0]) {
+//         var reader = new FileReader();
+//         reader.onload = function (e) {
+//             $('#blah').attr('src', e.target.result).width(150).height(200);
+//         };
+//         reader.readAsDataURL(input.files[0]);
+//     }
+// }
+// function handleImageUpload() 
+// {
 
+// var image = document.getElementById("upload").files[0];
+
+//     var reader = new FileReader();
+
+//     reader.onload = function(e) {
+//       document.getElementById("display-image").src = e.target.result;
+//     }
+
+//     reader.readAsDataURL(image);
+
+// } 
 
 // "<div class=\"bg-light\">" + 
 //                         "<img src=\"images.jpg\" class=\"profileimage\">" +
