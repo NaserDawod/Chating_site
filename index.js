@@ -248,7 +248,7 @@ function addContact(contacts){
                                 "<p class=\"mb-1\">message</p>" +
                             "</div>" +
                             "<div class=\"flex-grow-1 text-right\">" +
-                                "<div class=\"small time\">15:41</div>" + 
+                                "<div class=\"small time\" id=\""+ key +"-t\">15:41</div>" + 
                             "</div>" +
                         "</div>")
         i += 1
