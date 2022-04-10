@@ -176,6 +176,31 @@ function sendMessage() {
 }
 
 
+function sendImage(){
+    var elem = document.getElementById('chay-p')
+    elem.innerHTML += "<div class=\"flex-row d-flex align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+                        "<div class=\"d-flex flex-row\">"+
+                            // "<div class=\"body m-1 mr-2\">"+ 
+                            "<img src=\"\" hight='150px' id='img-i'>" +
+                            // +"</div>"+
+                            // "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
+                            //     time +
+                            //     "<i class=\"fas fa-check-circle\"></i>"+
+                            // "</div>"+
+                        "</div>"+
+                    "</div>"
+    var image = document.getElementById("input-img").files[0];
+
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      document.getElementById("img-i").src = e.target.result;
+    }
+
+    reader.readAsDataURL(image);
+    
+}
+
 function printContacts(contacts) {
     for (const [key, user] of Object.entries(contacts_map)) {
         document.write("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages("+ "\'" +key+ "\'" +")\">" + 
