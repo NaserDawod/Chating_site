@@ -53,7 +53,7 @@ function readMessage(key){
     let str = ''
     elem.forEach(msg =>{
         if(msg.getwho()===key){ //bhem
-            str+="<div class=\"align-self-start self p-1 my-1 mx-3 rounded bg-white shadow-sm message-item\">"+          
+            str+="<div class=\"flex-row d-flex align-self-start self p-1 my-1 mx-3 rounded bg-white shadow-sm message-item\">"+          
                     "<div class=\"d-flex flex-row\">"+
                         "<div class=\"body m-1 mr-2\">"+ msg.getmsg() +"</div>"+
                         "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
@@ -64,7 +64,7 @@ function readMessage(key){
                 "</div>"
         }
         else{ //a7na
-            str+="<div class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+            str+="<div class=\"flex-row d-flex align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
                     "<div class=\"d-flex flex-row\">"+
                         "<div class=\"body m-1 mr-2\">"+ msg.getmsg() +"</div>"+
                         "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
@@ -91,8 +91,10 @@ function showMessages(i){
                             "<path d=\"M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z\"/>" +
                         "</svg>" +
                     "</div>" +
-                    "<div class=\"d-flex flex-column chat-de  overlay\" id=\"chat_p\">"+
-                    readMessage(i)+
+                    "<div class=\"table-wrapper-scroll-y my-custom-scrollbar d-flex flex-column chat-de  overlay\" id=\"chat_p\">"+
+                        "<table class=\"table table-bordered table-striped mb-0\">" +
+                            readMessage(i)+
+                        "</table>" +
                     "</div>" +
                     "<div class=\"input-group Typehere\">" +
                         "<span class=\"input-group-text iconsandinput\">" +
@@ -105,7 +107,7 @@ function showMessages(i){
                             "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-paperclip\" viewBox=\"0 0 16 16\">" +
                             "<path d=\"M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z\"/>" +
                             "</svg>"+
-                            "<div class=\"dropup-content\">"+
+                            "<div class=\"dropup-content\" id=\"hiden\">"+
                                 "<div class=\"clipdivs\">"+
                                 "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person biclips\" viewBox=\"0 0 16 16\">"+
                                 "<path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>"+
@@ -143,6 +145,11 @@ function showMessages(i){
                     "</div>"
 }
 
+// function temp(){
+//     let element = document.getElementById('hiden')
+//     element.setAttribute("style", "display: block;");
+// }
+
 function sendMessage() {
     let message = document.getElementById('typem').value
     document.getElementById('typem').value = ''
@@ -154,7 +161,7 @@ function sendMessage() {
         return
     }else{
         let elem = document.getElementById('chat_p')
-        elem.innerHTML += "<div class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+        elem.innerHTML += "<div class=\"flex-row d-flex align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
                             "<div class=\"d-flex flex-row\">"+
                                 "<div class=\"body m-1 mr-2\">"+ message +"</div>"+
                                 "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
