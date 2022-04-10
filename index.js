@@ -47,48 +47,13 @@ contacts_map["bhem8"] = new contact("bhem8", "images.jpg")
 contacts_map["bhem9"] = new contact("bhem9", "images.jpg")
 contacts_map["bhem10"] = new contact("bhem10", "images.jpg")
 
-// contacts.push(new contact("bhem1", "images.jpg"))
-// contacts.push(new contact("bhem2", "images.jpg"))
-// contacts.push(new contact("bhem3", "images.jpg"))
-// contacts.push(new contact("bhem4", "images.jpg"))
-// contacts.push(new contact("bhem5", "images.jpg"))
-// contacts.push(new contact("bhem1", "images.jpg"))
-// contacts.push(new contact("bhem2", "images.jpg"))
-// contacts.push(new contact("bhem3", "images.jpg"))
-// contacts.push(new contact("bhem4", "images.jpg"))
-// contacts.push(new contact("bhem5", "images.jpg"))
-// contacts.push(new contact("bhem1", "images.jpg"))
-// contacts.push(new contact("bhem2", "images.jpg"))
-// contacts.push(new contact("bhem3", "images.jpg"))
-// contacts.push(new contact("bhem4", "images.jpg"))
-// contacts.push(new contact("bhem5", "images.jpg"))
-
-// contacts.forEach(elem =>{
-//     document.write("<a href=\"#\" class=\"list-group-item list-group-item-action\">" +
-//                     "<div class=\"d-flex w-100 justify-content-between\">" +
-//                     "<h5 class=\"mb-1\">" + elem.getname() + "</h5>" +
-//                     "<small class=\"text-muted\">3 days ago</small>" +
-//                     "</div>"+ 
-//                     "<p class=\"mb-1\">message</p>" +
-//                     "</a>")
-// });
-
-// var message = "<div class=\"align-self-end self p-1 my-1 mx-3 rounded bg-white shadow-sm message-item\">"
-//                     "<div class=\"d-flex flex-row\">" +
-//                         "<div class=\"body m-1 mr-2\">if you go to the movie, then give me a call</div>" +
-//                         "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">" +
-//                             "22:41" +
-//                             "<i class=\"fas fa-check-circle\"></i>" +
-//                         "</div>" +
-//                     "</div>" +
-//                "</div>"
 
 function readMessage(key){
     let elem = contacts_map[key].getmessages()
     let str = ''
     elem.forEach(msg =>{
         if(msg.getwho()===key){ //bhem
-            str+="<div class=\"align-self-start self p-1 my-1 mx-3 rounded bg-white shadow-sm message-item\">"+          
+            str+="<div class=\"flex-row d-flex align-self-start self p-1 my-1 mx-3 rounded bg-white shadow-sm message-item\">"+          
                     "<div class=\"d-flex flex-row\">"+
                         "<div class=\"body m-1 mr-2\">"+ msg.getmsg() +"</div>"+
                         "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
@@ -99,7 +64,7 @@ function readMessage(key){
                 "</div>"
         }
         else{ //a7na
-            str+="<div class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+            str+="<div class=\"flex-row d-flex align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
                     "<div class=\"d-flex flex-row\">"+
                         "<div class=\"body m-1 mr-2\">"+ msg.getmsg() +"</div>"+
                         "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
@@ -126,8 +91,10 @@ function showMessages(i){
                             "<path d=\"M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z\"/>" +
                         "</svg>" +
                     "</div>" +
-                    "<div class=\"d-flex flex-column chat-de  overlay\" id=\"chat_p\">"+
-                    readMessage(i)+
+                    "<div class=\"table-wrapper-scroll-y my-custom-scrollbar d-flex flex-column chat-de  overlay\" id=\"chat_p\">"+
+                        "<table class=\"table table-bordered table-striped mb-0\">" +
+                            readMessage(i)+
+                        "</table>" +
                     "</div>" +
                     "<div class=\"input-group Typehere\">" +
                         "<span class=\"input-group-text iconsandinput\">" +
@@ -140,7 +107,7 @@ function showMessages(i){
                             "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-paperclip\" viewBox=\"0 0 16 16\">" +
                             "<path d=\"M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z\"/>" +
                             "</svg>"+
-                            "<div class=\"dropup-content\">"+
+                            "<div class=\"dropup-content\" id=\"hiden\">"+
                                 "<div class=\"clipdivs\">"+
                                 "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person biclips\" viewBox=\"0 0 16 16\">"+
                                 "<path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>"+
@@ -159,7 +126,7 @@ function showMessages(i){
                                 "</svg>"+
                                 "</div>"+
                                 "<div>"+
-                                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-image biclips\" viewBox=\"0 0 16 16\" data-bs-toggle=\"modal\" data-bs-target=\"#staticBackdrop\">"+
+                                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-image biclips\" viewBox=\"0 0 16 16\" data-bs-toggle=\"modal\" data-bs-target=\"#staticBackdrop2\">"+
                                 "<path d=\"M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z\"/>"+
                                 "<path d=\"M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z\"/>"+
                                 "</svg>"+
@@ -178,6 +145,11 @@ function showMessages(i){
                     "</div>"
 }
 
+// function temp(){
+//     let element = document.getElementById('hiden')
+//     element.setAttribute("style", "display: block;");
+// }
+
 function sendMessage() {
     let message = document.getElementById('typem').value
     document.getElementById('typem').value = ''
@@ -189,15 +161,15 @@ function sendMessage() {
         return
     }else{
         let elem = document.getElementById('chat_p')
-        elem.innerHTML += "<div class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
-                        "<div class=\"d-flex flex-row\">"+
-                            "<div class=\"body m-1 mr-2\">"+ message +"</div>"+
-                            "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
-                                time +
-                                "<i class=\"fas fa-check-circle\"></i>"+
+        elem.innerHTML += "<div class=\"flex-row d-flex align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+                            "<div class=\"d-flex flex-row\">"+
+                                "<div class=\"body m-1 mr-2\">"+ message +"</div>"+
+                                "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
+                                    time +
+                                    "<i class=\"fas fa-check-circle\"></i>"+
+                                "</div>"+
                             "</div>"+
-                        "</div>"+
-                    "</div>"
+                        "</div>"
         document.getElementById(name+'-t').innerText = time
         document.getElementById(name+'-m').innerText = message
     }
@@ -217,19 +189,6 @@ function printContacts(contacts) {
                             "</div>" +
                         "</div>")
     }
-    // contacts.forEach(elem =>{
-    //     document.write("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages("+ i +")\">" + 
-    //                         "<img src=\"" + elem.getimg() + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:50px;\">" +
-    //                         "<div class=\"w-50\">" +
-    //                             "<h5 class=\"mb-1\">" + elem.getname() + "</h5>" +
-    //                             "<p class=\"mb-1\">message</p>" +
-    //                         "</div>" +
-    //                         "<div class=\"flex-grow-1 text-right\">" +
-    //                             "<div class=\"small time\">15:41</div>" + 
-    //                         "</div>" +
-    //                     "</div>")
-    //     i += 1
-    // });
 }
 
 function addContact(contacts){
@@ -282,24 +241,3 @@ function addContact(contacts){
 
 // } 
 
-// "<div class=\"bg-light\">" + 
-//                         "<img src=\"images.jpg\" class=\"profileimage\">" +
-//                         "<span clas=\"d-flex\">" + "bheadasd" + "</span>" +
-//                             "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">" +
-//                                 "<path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z\"/>" +
-//                             "</svg>" +
-//                         "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-three-dots-vertical\" viewBox=\"0 0 16 16\">" + 
-//                             "<path d=\"M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z\"/>" +
-//                         "</svg>" +
-//                     "</div>"
-
-// "<a href=\"\" class=\"list-group-item list-group-item-action\">" + 
-//                     "<div class=\"d-flex justify-content-between\">" +
-//                         "<img src=\"" + elem.getimg() + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:40px;\">" +
-//                         "<div class=\"placeee\">" + 
-//                             "<h6 class=\"mb-1\">" + elem.getname() + "</h6>" + 
-//                             "<p class=\"mb-1\">message</p>" +
-//                         "</div>" + 
-//                         "<small class=\"text-muted\">3 days ago</small>" + 
-//                     "</div>" +
-//                 "</a>"
