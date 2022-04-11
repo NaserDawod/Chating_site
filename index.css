@@ -313,10 +313,11 @@ div#search {
 .dropup-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  bottom: 50px;
+  /* background-color: #f1f1f1; */
+  /* min-width: 160px; */
+  bottom: 30px;
   z-index: 1;
+  cursor: auto;
 }
 
 .dropup-content a {
@@ -339,25 +340,26 @@ div#search {
 .dropbtn2 {
     background-color: #3498DB;
     color: white;
-    padding: 160px;
-    font-size: 50px;
+    padding: 16px;
+    font-size: 16px;
     border: none;
   }
   
   .dropup2 {
-    width: 20px;
-    height: 20px;
-    position:fixed;
+    position: relative;
+    /* display: inline-block; */
+    float: right;
     top: 20px;
-    right: 15px;
-  }
+    border: none;
+    background: none;
+}
+  
   
   .dropup-content2 {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    bottom: 50px;
+     min-width: 160px;
+    /* bottom: 50px; */
     z-index: 1;
   }
   
@@ -368,7 +370,7 @@ div#search {
     display: block;
   }
   
-  .dropup-content2 a:hover {background-color: #ccc}
+  .dropup-content2 :hover {background-color: #ccc}
   
   .dropup2:hover .dropup-content2 {
     display: block;
@@ -378,11 +380,10 @@ div#search {
     background-color: #2980B9;
   }
 
-  .bi-three-dots-vertical {
+  .bi-three-dots-vertical{
     width: 20px;
     height: 20px;
-    position:fixed;
+    /* position: absolute; */
     top: 20px;
     right: 15px;
-}
-
+ }
