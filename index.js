@@ -1,8 +1,9 @@
 class Messages{
-    constructor(who, time, msg){
+    constructor(who, time, msg, type){
         this.who = who
         this.time = time
         this.msg = msg
+        this.type = type
     }
     getwho(){
         return this.who
@@ -12,6 +13,9 @@ class Messages{
     }
     getmsg(){
         return this.msg
+    }
+    gettype(){
+        return this.type
     }
 }
 class contact{
@@ -29,8 +33,8 @@ class contact{
     getmessages(){
         return this.messages
     }
-    addmessage(who, time, msg){
-        this.messages.push(new Messages(who,time,msg))
+    addmessage(who, time, msg, type){
+        this.messages.push(new Messages(who,time,msg, type))
     }
 }
 
@@ -51,29 +55,44 @@ contacts_map["bhem10"] = new contact("bhem10", "images.jpg")
 function readMessage(key){
     let elem = contacts_map[key].getmessages()
     let str = ''
+    i = 0
     elem.forEach(msg =>{
-        if(msg.getwho()===key){ //bhem
-            str+="<div class=\"flex-row d-flex align-self-start self p-1 my-1 mx-3 rounded bg-white shadow-sm message-item\">"+          
-                    "<div class=\"d-flex flex-row\">"+
-                        "<div class=\"body m-1 mr-2\">"+ msg.getmsg() +"</div>"+
-                        "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
-                            msg.gettime() +
-                            "<i class=\"fas fa-check-circle\"></i>"+
+        if(msg.gettype() === 'm'){
+            if(msg.getwho()===key){ //bhem
+                str+="<div class=\"flex-row d-flex align-self-start self p-1 my-1 mx-3 rounded bg-white shadow-sm message-item\">"+          
+                        "<div class=\"d-flex flex-row\">"+
+                            "<div class=\"body m-1 mr-2\">"+ msg.getmsg() +"</div>"+
+                            "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
+                                msg.gettime() +
+                                "<i class=\"fas fa-check-circle\"></i>"+
+                            "</div>"+
                         "</div>"+
-                    "</div>"+
-                "</div>"
-        }
-        else{ //a7na
-            str+="<div class=\"flex-row d-flex align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
-                    "<div class=\"d-flex flex-row\">"+
-                        "<div class=\"body m-1 mr-2\">"+ msg.getmsg() +"</div>"+
-                        "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
-                            msg.gettime() +
-                            "<i class=\"fas fa-check-circle\"></i>"+
+                    "</div>"
+            }
+            else{ //a7na
+                console.log('fuck')
+                str+="<div class=\"flex-row d-flex align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+                        "<div class=\"d-flex flex-row\">"+
+                            "<div class=\"body m-1 mr-2\">"+ msg.getmsg() +"</div>"+
+                            "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
+                                msg.gettime() +
+                                "<i class=\"fas fa-check-circle\"></i>"+
+                            "</div>"+
                         "</div>"+
-                    "</div>"+
-                "</div>"
+                    "</div>"
+            }
+        } else if(msg.gettype() === 'i'){
+            str += "<div id=\"img\" class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+                        "<div class=\"d-flex flex-row\">"+
+                            "<img src=\"\" alt=\"\" id=\"img-" + i + "\" height=\"150px\">" +
+                        "</div>"+
+                        "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
+                                    msg.gettime() +
+                                "<i class=\"fas fa-check-circle\"></i>"+
+                            "</div>"+
+                    "</div>"
         }
+        i++
     });
     return str
 }
@@ -99,8 +118,9 @@ function showMessages(i){
                         "</button>"+
                     "</div>" +
                     "<div class=\"table-wrapper-scroll-y my-custom-scrollbar d-flex flex-column chat-de  overlay\" id=\"chat_p\">"+
+                        readMessage(i)+
                         "<table class=\"table table-bordered table-striped mb-0\">" +
-                            readMessage(i)+
+                            // readMessage(i)+
                         "</table>" +
                     "</div>" +
                     "<div class=\"input-group Typehere\">" +
@@ -109,53 +129,46 @@ function showMessages(i){
                                 "<path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>" + 
                                 "<path d=\"M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z\"/>" +
                             "</svg>" +
-                            // "<ul class=\"dropup iconsandinput\">"+
                             "<button class=\"dropup\">"+
-                            "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-paperclip\" viewBox=\"0 0 16 16\">" +
-                            "<path d=\"M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z\"/>" +
-                            "</svg>"+
-                            "<div class=\"dropup-content\" id=\"hiden\">"+
-                                "<div class=\"clipdivs\">"+
-                                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person biclips\" viewBox=\"0 0 16 16\">"+
-                                "<path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>"+
+                                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-paperclip\" viewBox=\"0 0 16 16\">" +
+                                    "<path d=\"M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z\"/>" +
                                 "</svg>"+
-                                "</div>"+
-                                "<div>"+
-                                "<div>"+
-                                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-file-earmark biclips\" viewBox=\"0 0 16 16\">"+
-                                "<path d=\"M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z\"/>"+
-                                "</svg>"+
-                                "</div>"+
-                                "<div>"+
-                                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-camera biclips\" viewBox=\"0 0 16 16\">"+
-                                "<path d=\"M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z\"/>"+
-                                "<path d=\"M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z\"/>"+
-                                "</svg>"+
-                                "</div>"+
-                                "<div>"+
-                                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-image biclips\" viewBox=\"0 0 16 16\" data-bs-toggle=\"modal\" data-bs-target=\"#staticBackdrop2\">"+
-                                "<path d=\"M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z\"/>"+
-                                "<path d=\"M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z\"/>"+
-                                "</svg>"+
-                                "</div>"+
+                                "<div class=\"dropup-content\" id=\"hiden\">"+
+                                    "<div class=\"clipdivs\">"+
+                                        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person biclips\" viewBox=\"0 0 16 16\">"+
+                                            "<path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>"+
+                                        "</svg>"+
+                                    "</div>"+
+                                    "<div>"+
+                                        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-file-earmark biclips\" viewBox=\"0 0 16 16\">"+
+                                            "<path d=\"M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z\"/>"+
+                                        "</svg>"+
+                                    "</div>"+
+                                    "<div>"+
+                                        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-camera biclips\" viewBox=\"0 0 16 16\">"+
+                                            "<path d=\"M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z\"/>"+
+                                            "<path d=\"M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z\"/>"+
+                                        "</svg>"+
+                                    "</div>"+
+                                    "<div>"+
+                                        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-image biclips\" viewBox=\"0 0 16 16\" data-bs-toggle=\"modal\" data-bs-target=\"#staticBackdrop2\">"+
+                                            "<path d=\"M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z\"/>"+
+                                            "<path d=\"M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z\"/>"+
+                                        "</svg>"+
+                                    "</div>"+
                                 "</div>"+
                             "</button>"+
-
-                            // "<ul/>"+
                             "<input type=\"text\" class=\"form-control\" aria-label=\"Amount (to the nearest dollar)\" placeholder=\"Type a message\" id=\"typem\">" +
                             "<div onclick=\"sendMessage()\">"+
-                            "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-send-fill\" viewBox=\"0 0 16 16\">"+
-                                "<path d=\"M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z\">"+
-                              "</svg>" +
+                                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-send-fill\" viewBox=\"0 0 16 16\">"+
+                                    "<path d=\"M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z\">"+
+                                "</svg>" +
                             "</div>" +
                         "</span>" +
                     "</div>"
+    printImages(i)
 }
 
-// function temp(){
-//     let element = document.getElementById('hiden')
-//     element.setAttribute("style", "display: block;");
-// }
 
 function sendMessage() {
     let message = document.getElementById('typem').value
@@ -163,7 +176,8 @@ function sendMessage() {
     let name = document.getElementById('contact_name').innerText
     var today = new Date();
     var time = today.getHours() + ":" + today.getMinutes();
-    contacts_map[name].addmessage('bhemali', time, message)
+    let temp = new Messages('bhemali', time, message, "m")
+    contacts_map[name].addmessage('bhemali', time, message, "m")
     if((message.trim()).length===0){
         return
     }else{
@@ -182,6 +196,54 @@ function sendMessage() {
     }
 }
 
+
+function sendImage(){
+    var elem = document.getElementById('chat_p')
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes();
+    let name = document.getElementById('contact_name').innerText
+    let str = 'img-' + contacts_map[name].getmessages().length
+    elem.innerHTML += "<div class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+                            "<div class=\"d-flex flex-row\">"+
+                                "<img src=\"\" alt=\"\" id=\"" + str + "\" height=\"150px\">" +
+                            "</div>"+
+                            "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
+                                time +
+                                "<i class=\"fas fa-check-circle\"></i>"+
+                            "</div>"+
+                        "</div>"
+    var image = document.getElementById("input_img").files[0];
+    contacts_map[name].addmessage('bhemali', time, image, 'i')
+    var reader = new FileReader();
+
+    document.getElementById(name+'-t').innerText = time
+    document.getElementById(name+'-m').innerText = 
+
+    reader.onload = function(e) {
+      document.getElementById(str).src = e.target.result;
+    }
+
+    reader.readAsDataURL(image);
+    document.getElementById("input_img").value = ''
+}
+
+function printImages(name){
+    // let images = []
+    var searchEles = document.getElementById("chat_p").children;
+    // let name = document.getElementById('contact_name').innerText
+    // console.log(name, searchEles)
+    for(var i = 0; i < searchEles.length; i++) {
+        if(searchEles[i].id === 'img') {
+            var reader = new FileReader();
+            let str = 'img-' + i
+            reader.onload = function(e) {
+                document.getElementById(str).src = e.target.result;
+            }
+            let image = contacts_map[name].getmessages()[i].getmsg()
+            reader.readAsDataURL(image);
+        }
+    }
+}
 
 function printContacts(contacts) {
     for (const [key, user] of Object.entries(contacts_map)) {
