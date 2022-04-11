@@ -161,6 +161,14 @@ max-height: max-content;
      right: 40px;
 }
 
+ .bi-three-dots-vertical{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+ }
+
  .personalchat{
      width: 100%;
      height: 80%;
@@ -296,94 +304,3 @@ div#search {
     padding-top: 6px;
     border-bottom: 0.1vh solid lightgray;
 }
-
-.dropbtn {
-  background-color: #3498DB;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-}
-
-.dropup {
-  position: relative;
-  display: inline-block;
-}
-
-.dropup-content {
-  display: none;
-  position: absolute;
-  /* background-color: #f1f1f1; */
-  /* min-width: 160px; */
-  bottom: 30px;
-  z-index: 1;
-  /* cursor: auto; */
-}
-
-.dropup-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropup-content a:hover {background-color: #ccc}
-
-.dropup:hover .dropup-content {
-  display: block;
-}
-
-.dropup:hover .dropbtn {
-  background-color: #2980B9;
-}
-
-.dropbtn2 {
-    background-color: #3498DB;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-  }
-  
-  .dropup2 {
-    position: relative;
-    /* display: inline-block; */
-    float: right;
-    top: 20px;
-    border: none;
-    background: none;
-}
-  
-  
-  .dropup-content2 {
-    display: none;
-    position: absolute;
-     min-width: 160px;
-    /* bottom: 50px; */
-    z-index: 1;
-  }
-  
-  .dropup-content2  {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropup-content2 :hover {background-color: #ccc}
-  
-  .dropup2:hover .dropup-content2 {
-    display: block;
-  }
-  
-  .dropup2:hover .dropbtn2 {
-    background-color: #2980B9;
-  }
-
-  .bi-three-dots-vertical{
-    width: 20px;
-    height: 20px;
-    /* position: absolute; */
-    top: 20px;
-    right: 15px;
- }
