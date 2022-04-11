@@ -317,7 +317,7 @@ div#search {
   /* min-width: 160px; */
   bottom: 30px;
   z-index: 1;
-  cursor: auto;
+  /* cursor: auto; */
 }
 
 .dropup-content a {
