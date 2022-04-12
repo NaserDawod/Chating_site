@@ -96,3 +96,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
+
+.login-page {
+    width: 400px;
+}
+
+.reglabels{
+    margin-right: 100%;
+}
+.reglabels2{
+    margin-right: 60%;
+}
+.reglabels3{
+    margin-right: 67%;
+}
