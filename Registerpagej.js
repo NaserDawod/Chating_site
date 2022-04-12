@@ -23,20 +23,16 @@ function adduser(){
     let name = document.getElementById('name').value
     let email = document.getElementById('email').value
     let password = document.getElementById('password').value
-    let img = document.getElementById('input_img').value
-    document.getElementById('name').value = ''
-    document.getElementById('password').value = ''
-    document.getElementById('email').value = ''
-    document.getElementById('input_img').value = ''
-    users[name] = new user(name, password, email, img)
-    console.log(users)
+    let img = document.getElementById('input_img').files[0]
+    for (const [key, value] of Object.entries(users)) {
+        if(name === value.name){
+            console.log("this user is already exist")
+        }
+      }
+      document.getElementById('name').value = ''
+      document.getElementById('password').value = ''
+      document.getElementById('repassword').value = ''
+      document.getElementById('email').value = ''
+      document.getElementById('input_img').value = ''
+      users[name] = new user(name, password, email, img)
 }
-
-// const addcontact = (ev)=>{
-//     ev.preventDefault();
-//     let user = {
-//         personalname : document.getElementById('personal_name')
-//     }
-//     users.push(user)
-//     document.forms[0].reset();
-// }
