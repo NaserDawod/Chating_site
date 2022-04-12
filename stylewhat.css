@@ -110,3 +110,12 @@ body {
 .reglabels3{
     margin-right: 67%;
 }
+
+
+.wrong {
+  display: none;
+}
+.wrong-show {
+  display: block;
+  color: red;
+}

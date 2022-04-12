@@ -26,13 +26,16 @@ function adduser(){
     let img = document.getElementById('input_img').files[0]
     for (const [key, value] of Object.entries(users)) {
         if(name === value.name){
+            let elem = document.getElementById("bhem-m2")
+            elem.setAttribute("class", 'wrong-show')
             console.log("this user is already exist")
         }
-      }
-      document.getElementById('name').value = ''
-      document.getElementById('password').value = ''
-      document.getElementById('repassword').value = ''
-      document.getElementById('email').value = ''
-      document.getElementById('input_img').value = ''
-      users[name] = new user(name, password, email, img)
+    }
+    document.getElementById('name').value = ''
+    document.getElementById('password').value = ''
+    document.getElementById('repassword').value = ''
+    document.getElementById('email').value = ''
+    document.getElementById('input_img').value = ''
+    users[name] = new user(name, password, email, img)
+    window.location.href="ChatPage.html";
 }
