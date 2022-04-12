@@ -304,3 +304,9 @@ div#search {
     padding-top: 6px;
     border-bottom: 0.1vh solid lightgray;
 }
+
+.inter-back {
+    flex: 1!important;
+    background:url(homeImage.png);
+    /* min-height: 80.5vh; */
+}

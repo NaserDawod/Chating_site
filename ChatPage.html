@@ -64,6 +64,28 @@
           </div>
         </div>
     </div>
+    <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel2">choose Video</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label"></label>
+                        <input class="form-control" type="file" id="input_vid" accept="Video/*" />
+                        <!-- <img id="input_img"  width = 200px src="" /> -->
+                    </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="sendVid()">send</button>
+            </div>
+          </div>
+        </div>
+    </div>
     <div class="row container-fluid">
         <div class="col-4 right-pad" style="border-right: 0.2vh solid lightgray;">
             <div class="bg-light" style="width: 100%;">
@@ -93,7 +115,7 @@
 
         </div>
         <div class="col-8 left-pad" id="messages">
-            
+            <div class="inter-back"></div>
         </div>
     </div>
 
