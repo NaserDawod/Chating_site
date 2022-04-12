@@ -70,7 +70,6 @@ function readMessage(key){
                     "</div>"
             }
             else{ //a7na
-                console.log('fuck')
                 str+="<div class=\"flex-row d-flex align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
                         "<div class=\"d-flex flex-row\">"+
                             "<div class=\"body m-1 mr-2\">"+ msg.getmsg() +"</div>"+
@@ -90,6 +89,16 @@ function readMessage(key){
                                     msg.gettime() +
                                 "<i class=\"fas fa-check-circle\"></i>"+
                             "</div>"+
+                    "</div>"
+        }else if(msg.gettype() === 'v'){
+            str += "<div id='vid'class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+                        "<video width=\"320\" controls id='vid-" + i + "'>" +
+                            "<source id=\"video-source\" src=\"splashVideo\">" +
+                        "</video>" +
+                        "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
+                            msg.gettime() +
+                            "<i class=\"fas fa-check-circle\"></i>"+
+                        "</div>"+
                     "</div>"
         }
         i++
@@ -147,7 +156,7 @@ function showMessages(i){
                                         "</svg>"+
                                     "</div>"+
                                     "<div>"+
-                                        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-camera biclips\" viewBox=\"0 0 16 16\">"+
+                                        "<svg data-bs-toggle=\"modal\" data-bs-target=\"#staticBackdrop3\" xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-camera biclips\" viewBox=\"0 0 16 16\">"+
                                             "<path d=\"M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z\"/>"+
                                             "<path d=\"M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z\"/>"+
                                         "</svg>"+
@@ -171,6 +180,29 @@ function showMessages(i){
     printImages(i)
 }
 
+function sendVid() {
+    var elem = document.getElementById('chat_p')
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes();
+    let name = document.getElementById('contact_name').innerText
+    let str = 'vid-' + contacts_map[name].getmessages().length
+    elem.innerHTML += "<div id='vid'class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+                            "<video width=\"320\" controls id='" + str + "'>" +
+                            "</video>" +
+                            "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
+                                time +
+                                "<i class=\"fas fa-check-circle\"></i>"+
+                            "</div>"+
+                        "</div>"
+
+    var vid = document.getElementById("input_vid").files[0];
+    contacts_map[name].addmessage('bhemali', time, vid, 'v')
+    document.getElementById("input_vid").value = ''
+    let url = URL.createObjectURL(vid)
+    let video = document.querySelector("#" + str);
+    video.setAttribute("src", url)
+    // video.play();
+}
 
 function sendMessage() {
     let message = document.getElementById('typem').value
@@ -243,6 +275,12 @@ function printImages(name){
             }
             let image = contacts_map[name].getmessages()[i].getmsg()
             reader.readAsDataURL(image);
+        } else if (searchEles[i].id === 'vid'){
+            var vid = contacts_map[name].getmessages()[i].getmsg()
+            let url = URL.createObjectURL(vid)
+            let str = 'vid-' + i
+            let video = document.querySelector("#" + str);
+            video.setAttribute("src", url)
         }
     }
 }

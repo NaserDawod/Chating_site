@@ -311,6 +311,14 @@ div#search {
     /* padding: 16px; */
     /* font-size: 16px; */
     /* border: none; */ 
+}
+.inter-back {
+    flex: 1!important;
+    background:url(homeImage.png);
+    /* min-height: 80.5vh; */
+}
+.dropup2 {
+    border: none;
   }
   
   .dropdown {
