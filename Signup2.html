@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="stylewhat.css">
         <script type="text/javascript" src="Login.js"></script>
+        <script type="text/javascript" src="Registerpagej.js"></script>
     </head>
     <body>
         <div class="login-page">
@@ -15,10 +16,36 @@
               <p class="message">Already registered? <a href="#">Sign In</a></p>
             </form>
             <form class="login-form">
-              <input type="text" placeholder="username"/>
-              <input type="password" placeholder="password"/>
-              <input  placeholder="image" type="file" id="input_vid" accept="Video/*" />
-              <button>Sign up</button>
+              <h1>Sign Up</h1>
+              <p>Please fill in this form to create an account.</p>
+              <hr>
+
+              <label for="username">
+                <b class="reglabels">Username</b>
+              </label>
+              <input type="text" placeholder="Enter Username" name="username" id="name" required>
+
+              <label for="email">
+                <b class="reglabels">Email</b>
+              </label>
+              <input type="text" placeholder="Enter Email" name="email" id="email" required>
+          
+              <label for="psw">
+                <b class="reglabels">Password</b>
+              </label>
+              <input type="password" placeholder="Enter Password" name="psw" id="password" required>
+          
+              <label for="psw-repeat">
+                <b class="reglabels2">Repeat Password</b>
+              </label>
+              <input type="password" placeholder="Repeat Password" name="psw-repeat" id="repassword" required>
+              
+              <label for="add-img">
+                <b class="reglabels3">Choose image</b>
+              </label>
+              <input class="form-control" type="file" id="input_img" accept="image/png, image/jpeg,image/jpg" />
+              
+              <button type="submit" class="signupbtn" data-bs-dismiss="modal" onclick="adduser()">Sign Up</button>
               <p class="message">have an account please sign in <a href="Login2.html">log in</a></p>
             </form>
           </div>
