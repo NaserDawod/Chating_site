@@ -106,6 +106,11 @@ function readMessage(key){
     return str
 }
 
+function printuser(user){
+    // print user data on top left
+    // user has contact list -> print it
+}
+
 function showMessages(i){
     let elem = document.getElementById('messages')
     let user = contacts_map[i]
