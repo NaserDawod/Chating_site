@@ -8,6 +8,7 @@ class contacts{
 class user{
     constructor(name, password, email, img, type){
         this.name = name
+        this.nickname = nickname
         this.password = password
         this.email = email
         this.img = {'img' : img , 'type' : type}
@@ -15,26 +16,25 @@ class user{
     }
 }
 
-let users = {"ahmad1": new user("ahmad1", "ahmad2@gmail.com", "12345","images.jpg"),
-        "ahmad2": new user("ahmad2", "ahmad2@gmail.com", "12345","images.jpg"),
-        "ahmad3": new user("ahmad3", "ahmad2@gmail.com", "12345","images.jpg") }
+let users = {"Emily Smith": new user("Emily Smith", "Emily", "12345","images.jpg"),
+            "James Thomas": new user("James Thomas", "James", "12345","images.jpg"),
+            "Sarah Smith": new user("Sarah Smith", "Sarah", "12345","images.jpg"),
+            "David Smith": new user("David Smith", "David", "12345","images.jpg"),
+            "Robert Thomas": new user("Robert Thomas", "Robert", "12345","images.jpg") }
 
 
 async function adduser(){
     let name = document.getElementById('name').value
-    let email = document.getElementById('email').value
+    let nickname = document.getElementById('nickname').value
     let password = document.getElementById('password').value
-    let img = document.getElementById('input_img').files[0]
-    for (const [key, value] of Object.entries(users)) {
-        if(name === value.name){
-            let elem = document.getElementById("bhem-m2")
-            elem.setAttribute("class", 'wrong-show')
-        }
-    }
+    let repassword = document.getElementById('repassword').value
+    let img = document.getElementById('input_img').files[0]    
+    console.log(check(name, nickname, password, repassword, img))
+    if(!(check(name, nickname, password, repassword, img) === false)){
     document.getElementById('name').value = ''
+    document.getElementById('nickname').value = ''
     document.getElementById('password').value = ''
     document.getElementById('repassword').value = ''
-    document.getElementById('email').value = ''
     document.getElementById('input_img').value = ''
     var type = img.type
     var base64data
@@ -49,4 +49,34 @@ async function adduser(){
     window.location="ChatPage.html";
 }
 
+function check(name, nickname, password, repassword, img){
+    if(name.length === 0){
+        let elem = document.getElementById("bhem-m4")
+        elem.setAttribute("class", 'wrong-show')
+        return false
+    }
+    for (const [key, value] of Object.entries(users)) {
+         if(name === value.name){
+            // let elem = document.getElementById("bhem-m2")
+            // elem.setAttribute("class", 'wrong-show')
+            return false
+        }
+    }
+    if(nickname.length === 0){
+        // let elem = document.getElementById("bhem-m6")
+        // elem.setAttribute("class", 'wrong-show')
+        return false
+    }
 
+    if(password.length === 0){
+        // let elem = document.getElementById("bhem-m5")
+        // elem.setAttribute("class", 'wrong-show')
+        return false
+    }
+         if(password !== repassword){
+            // let elem = document.getElementById("bhem-m3")
+            // elem.setAttribute("class", 'wrong-show')
+            return false
+        }
+        return true
+    }
