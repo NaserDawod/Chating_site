@@ -56,10 +56,11 @@ min-height: 475px;
 }
 
 .profileimage{
-    width: 50px;
+    /* width: 50px; */
     border-radius: 50%;
     margin:5px;
-
+    height: 57px;
+    max-width: 60px;
 }
 
 .bi{
@@ -361,4 +362,9 @@ div#search {
 
   .biclips2{
     border-bottom: 0.1vh solid black
+}
+
+div#cont-img {
+    width: 50px;
+    margin-right: 3vh;
 }
