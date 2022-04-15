@@ -13,10 +13,22 @@
     <!-- custom CSS -->
     <link rel="stylesheet" href="index.css">
     <script type="text/javascript" src="index.js"></script>
+    <!-- <script type="text/javascript" src="chat.js"></script> -->
     <script type="text/javascript" src="Registerpagej.js"></script>
     <script type="text/javascript" src="Login.js"></script>
 </head>
 <body>
+    <script type="text/javascript" > 
+        const usern = JSON.parse(sessionStorage.getItem("jsArray"));
+        const byteCharacters = atob(usern['img']['img']);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], {type: usern['img']['type']});
+        usern['img'] = blob
+    </script>
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -117,7 +129,6 @@
 
         </div>
         <div class="col-8 left-pad" id="messages">
-            <div class="inter-back"></div>
         </div>
     </div>
 
