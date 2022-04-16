@@ -100,7 +100,20 @@ function readMessage(key){
                             "<i class=\"fas fa-check-circle\"></i>"+
                         "</div>"+
                     "</div>"
-        }
+         }
+         else if(msg.gettype() === 'r'){
+            str += "<div class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+                        "<div class=\"d-flexw flex-row\">"+
+                            "<p>"+
+                                "<audio  id=\"rec-" + i + "\" class=\"aud\"  src=\"\"></audio>"+
+                            "</p>"+
+                        "</div>"+
+                        "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
+                            msg.gettime() +
+                            "<i class=\"fas fa-check-circle\"></i>"+
+                        "</div>"+
+                    "</div>"
+         }
         i++
     });
     return str
@@ -156,9 +169,10 @@ function showMessages(i){
                                         "</svg>"+
                                     "</div>"+
                                     "<div>"+
-                                        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-file-earmark biclips\" viewBox=\"0 0 16 16\">"+
-                                            "<path d=\"M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z\"/>"+
-                                        "</svg>"+
+                                    "<svg xmlns=\"http://www.w3.org/2000/svg\" onclick=\"sendvoice()\" data-bs-toggle=\"modal\" data-bs-target=\"#staticBackdrop4\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-mic-fill biclips\" viewBox=\"0 0 16 16\">"+
+                                    "<path d=\"M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z\"/>"+
+                                    "<path d=\"M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z\"/>"+
+                                  "</svg>"+
                                     "</div>"+
                                     "<div>"+
                                         "<svg data-bs-toggle=\"modal\" data-bs-target=\"#staticBackdrop3\" xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-camera biclips\" viewBox=\"0 0 16 16\">"+
@@ -265,6 +279,122 @@ function sendImage(){
     reader.readAsDataURL(image);
     document.getElementById("input_img").value = ''
 }
+
+var rec;
+function sendvoice(){
+    var elem = document.getElementById('chat_p')
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes();
+    let name = document.getElementById('contact_name').innerText
+    let str = 'rec-' + contacts_map[name].getmessages().length
+    elem.innerHTML += "<div class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+                        "<div class=\"d-flexw flex-row\">"+
+                            "<p>"+
+                                "<audio  id=\"" + str + "\" class=\"aud\" src=\"\"></audio>"+
+                            "</p>"+
+                        "</div>"+
+                        "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
+                            time +
+                            "<i class=\"fas fa-check-circle\"></i>"+
+                        "</div>"+
+                    "</div>"
+    navigator.mediaDevices.getUserMedia({audio:true})
+    .then(stream => {handlerFunction(stream)})                 
+    // var rec;
+    function handlerFunction(stream) {
+        rec = new MediaRecorder(stream);
+        rec.ondataavailable = function(e) {
+        audioChunks.push(e.data);
+        if (rec.state == "inactive"){
+        let blob = new Blob(audioChunks,{type:'audio/mp3'});
+        let recordedAudio = document.getElementById(str); 
+        recordedAudio.src = URL.createObjectURL(blob);
+        recordedAudio.controls=true;
+        recordedAudio.autoplay=true;
+        sendData(blob)
+        }
+      }
+    }
+    var recordA = document.getElementById(str)
+    contacts_map[name].addmessage('bhemali', time, recordA, 'r')
+
+    document.getElementById(name+'-t').innerText = time
+    document.getElementById(name+'-m').innerText = "Voice message"
+
+    // var reader = new FileReader();
+    // reader.onload = function(e) {
+    //   document.getElementById(str).src = e.target.result;
+    // }
+
+    // reader.readAsDataURL(image);
+    //  document.getElementById(str).value = ''
+}
+
+// navigator.mediaDevices.getUserMedia({audio:true})
+// .then(stream => {handlerFunction(stream)}) 
+// function handlerFunction(stream) {
+//     rec = new MediaRecorder(stream);
+//     rec.ondataavailable = function(e) {
+//       audioChunks.push(e.data);
+//       if (rec.state == "inactive"){
+//         let blob = new Blob(audioChunks,{type:'audio/mp3'});
+//         let recordedAudio = document.getElementById('recordedAudio'); 
+//         recordedAudio.src = URL.createObjectURL(blob);
+//         recordedAudio.controls=true;
+//         recordedAudio.autoplay=true;
+//         sendData(blob)
+//         }
+//       }
+//     }
+  
+  function sendData(data) {}
+    function strartRec(){
+     let record = document.getElementById('record');  
+     let stopRecord = document.getElementById('stopRecord');  
+      record.disabled = true;
+      record.style.backgroundColor = "blue"
+      stopRecord.disabled=false;
+      audioChunks = [];
+      rec.start();
+      }
+    function stopRec() {
+      let record = document.getElementById('record');    
+      record.disabled = false;
+      stop.disabled=true;
+      record.style.backgroundColor = "red"
+      rec.stop();
+      }
+// function handlerFunction(stream) {
+//     var item = []  
+//     rec = new MediaRecorder(stream);
+//     rec.ondataavailable = e => {
+//      item.push(e.data)
+//       if (rec.state == "inactive"){
+//         let blob = new Blob(item,{type:'audio/mp3'});
+//         recordedAudio.src = URL.createObjectURL(blob);
+//         recordedAudio.controls=true;
+//         recordedAudio.autoplay=true;
+//         sendData(blob)
+//         }
+//       }
+//     }
+  
+//   function sendData(data) {}
+//     record.onclick = startRec();
+//       function startRec() {
+//       record.disabled = true;
+//       record.style.backgroundColor = "blue"
+//       stopRecord.disabled=false;
+//       audioChunks = [];
+//       rec.start();
+//       }
+//     stopRecord.onclick = endRec
+//       function endRec(){
+//       record.disabled = false;
+//       stop.disabled=true;
+//       record.style.backgroundColor = "red"
+//       rec.stop();
+//       }
 
 function printImages(name){
     // let images = []

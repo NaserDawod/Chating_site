@@ -42,8 +42,8 @@ function adduser(){
 
 function check(name, nickname, password, repassword, img){
     if(name.length === 0){
-        let elem = document.getElementById("bhem-m4")
-        elem.setAttribute("class", 'wrong-show')
+        // let elem = document.getElementById("bhem-m4")
+        // elem.setAttribute("class", 'wrong-show')
         return false
     }
     for (const [key, value] of Object.entries(users)) {

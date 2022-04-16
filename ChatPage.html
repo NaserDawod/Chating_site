@@ -88,6 +88,71 @@
           </div>
         </div>
     </div>
+
+    <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel2">Start Recording</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                      <p>
+                        <button type="button" id="record" onclick="strartRec()">Record</button>
+                        <button type="button" id="stopRecord" disabled onclick="stopRec()">Stop</button>
+                      </p>
+                      <!-- <p>
+                        <audio id="recordedAudio"></audio>        
+                      </p>
+                      
+                      <script> 
+                        navigator.mediaDevices.getUserMedia({audio:true})
+                        .then(stream => {handlerFunction(stream)})
+                      
+                        function handlerFunction(stream) {
+                          rec = new MediaRecorder(stream);
+                          rec.ondataavailable = e => {
+                            audioChunks.push(e.data);
+                            if (rec.state == "inactive"){
+                              let blob = new Blob(audioChunks,{type:'audio/mp3'});
+                              recordedAudio.src = URL.createObjectURL(blob);
+                              recordedAudio.controls=true;
+                              recordedAudio.autoplay=true;
+                              sendData(blob)
+                              }
+                            }
+                          }
+                        
+                        function sendData(data) {}
+                          record.onclick = e => {
+                            record.disabled = true;
+                            record.style.backgroundColor = "blue"
+                            stopRecord.disabled=false;
+                            audioChunks = [];
+                            rec.start();
+                            }
+                          stopRecord.onclick = e => {
+                            record.disabled = false;
+                            stop.disabled=true;
+                            record.style.backgroundColor = "red"
+                            rec.stop();
+                            }
+                        </script> -->
+                        <!-- <label for="formFile" class="form-label"></label>
+                        <input class="form-control" type="file" id="input_vid" accept="Video/*" /> -->
+                    </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <!-- onclick="sendvoice()" -->
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >send</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    
     <div class="row container-fluid">
         <div class="col-4 right-pad" style="border-right: 0.2vh solid lightgray;">
             <div id="main-user" class="bg-light" style="width: 100%;">
