@@ -30,7 +30,9 @@ var contacts_list = {'Naser' : new Contact2("Naser", 'images/img1.jpg'),'Hiba' :
                     'Emily Smith' : new Contact2("Emily Smith", 'images/img3.jpg'), 'j3fr' : new Contact2("j3fr", 'images/img4.png'),
                     'Emily Smith2' : new Contact2("Emily Smith2", 'images/img5.jpg')}
 
-
+var ml = [new Message('Naser', '12:37', 'hi there can you tell me how the homework in going with you','m'),
+        new Message('Naser', '12:37', 'im aleardy 2 weeks into it and its so hard','m')]
+contacts_list['Naser'].messages = ml
 
 let users = {"Emily Smith": new user("Emily Smith", "Emily", "12345","images.jpg"),
             "James Thomas": new user("James Thomas", "James", "12345","images.jpg"),
@@ -45,7 +47,6 @@ async function adduser(){
     let password = document.getElementById('password').value
     let repassword = document.getElementById('repassword').value
     let img = document.getElementById('input_img').files[0]    
-    // console.log(check(name, nickname, password, repassword, img))
     if(!(check(name, nickname, password, repassword, img) === false)){
         document.getElementById('name').value = ''
         document.getElementById('nickname').value = ''
@@ -60,7 +61,6 @@ async function adduser(){
             var img2 = base64data.split(',')[1]
             users[name] = new user(name, nickname, password, img2, type)
             users[name].contactslist = contacts_list
-            console.log(users[name])
             sessionStorage.setItem("jsArray", JSON.stringify(users[name]))
         }
         reader.readAsDataURL(img)
