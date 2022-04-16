@@ -117,9 +117,6 @@ height: 40px;
 padding: 10px;
 }
 
-/* .icon_place {
-    margin-left: 240px;
-} */
 
 .btn_place {
     margin-left: 370px;
@@ -248,14 +245,6 @@ max-height: max-content;
     margin-left: calc(var(--bs-gutter-x)/ -2);
 }
 
-/* .dropbtn {
-  background-color: #3498DB;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-} */
-
 .dropup {
   border: none;
 }
@@ -367,4 +356,13 @@ div#search {
 div#cont-img {
     width: 50px;
     margin-right: 3vh;
+}
+
+.n-input-group {
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    bottom: 0;
+    align-items: stretch;
+    width: inherit;
 }
