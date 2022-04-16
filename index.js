@@ -52,6 +52,8 @@ contacts_map["bhem9"] = new contact("bhem9", "images.jpg")
 contacts_map["bhem10"] = new contact("bhem10", "images.jpg")
 
 
+
+
 function readMessage(key){
     let elem = contacts_map[key].getmessages()
     let str = ''
@@ -119,10 +121,6 @@ function readMessage(key){
     return str
 }
 
-function printuser(user){
-    // print user data on top left
-    // user has contact list -> print it
-}
 
 function showMessages(i){
     let elem = document.getElementById('messages')
@@ -133,7 +131,6 @@ function showMessages(i){
                             "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\">" +
                                 "<path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z\"/>" +
                             "</svg>" +
-                        // "<div class=\"dropdown\">"+
                         "<button class=\"dropdown\">"+
                             "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-three-dots-vertical\" viewBox=\"0 0 16 16\">" + 
                                 "<path d=\"M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z\"/>" +
@@ -144,12 +141,10 @@ function showMessages(i){
                                 "<div class=\"biclips2\">Mute</div>"+
                             "</div>"+
                         "</button>"+
-                        // "</div>"+
                     "</div>" +
                     "<div class=\"table-wrapper-scroll-y my-custom-scrollbar d-flex flex-column chat-de  overlay\" id=\"chat_p\">"+
                         readMessage(i)+
                         "<table class=\"table table-bordered table-striped mb-0\">" +
-                            // readMessage(i)+
                         "</table>" +
                     "</div>" +
                     "<div class=\"input-group Typehere\">" +
@@ -220,7 +215,6 @@ function sendVid() {
     let url = URL.createObjectURL(vid)
     let video = document.querySelector("#" + str);
     video.setAttribute("src", url)
-    // video.play();
 }
 
 function sendMessage() {
@@ -317,6 +311,8 @@ function sendvoice(){
     }
     var recordA = document.getElementById(str)
     contacts_map[name].addmessage('bhemali', time, recordA, 'r')
+    console.log(recordA.strc)
+    console.log(recordA.strc)
 
     document.getElementById(name+'-t').innerText = time
     document.getElementById(name+'-m').innerText = "Voice message"
@@ -397,10 +393,7 @@ function sendvoice(){
 //       }
 
 function printImages(name){
-    // let images = []
     var searchEles = document.getElementById("chat_p").children;
-    // let name = document.getElementById('contact_name').innerText
-    // console.log(name, searchEles)
     for(var i = 0; i < searchEles.length; i++) {
         if(searchEles[i].id === 'img') {
             var reader = new FileReader();
@@ -420,7 +413,7 @@ function printImages(name){
     }
 }
 
-function printContacts(contacts) {
+function printContacts() {
     for (const [key, user] of Object.entries(contacts_map)) {
         document.write("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages("+ "\'" +key+ "\'" +")\">" + 
                             "<img src=\"" + user.getimg() + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:50px;\">" +
@@ -435,7 +428,7 @@ function printContacts(contacts) {
     }
 }
 
-function addContact(contacts){
+function addContact(){
     let name = document.getElementById('Username').value
     let img = document.getElementById('upload').value
     document.getElementById('Username').value = ''

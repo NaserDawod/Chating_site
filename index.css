@@ -56,10 +56,11 @@ min-height: 475px;
 }
 
 .profileimage{
-    width: 50px;
+    /* width: 50px; */
     border-radius: 50%;
     margin:5px;
-
+    height: 57px;
+    max-width: 60px;
 }
 
 .bi{
@@ -116,9 +117,6 @@ height: 40px;
 padding: 10px;
 }
 
-/* .icon_place {
-    margin-left: 240px;
-} */
 
 .btn_place {
     margin-left: 370px;
@@ -247,14 +245,6 @@ max-height: max-content;
     margin-left: calc(var(--bs-gutter-x)/ -2);
 }
 
-/* .dropbtn {
-  background-color: #3498DB;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-} */
-
 .dropup {
   border: none;
 }
@@ -305,13 +295,6 @@ div#search {
     border-bottom: 0.1vh solid lightgray;
 }
 
-.dropbtn2 {
-     /* background-color: #04AA6D; */
-    /* color: white; */
-    /* padding: 16px; */
-    /* font-size: 16px; */
-    /* border: none; */ 
-}
 .inter-back {
     flex: 1!important;
     background:url(homeImage.png);
@@ -365,3 +348,17 @@ div#search {
  .aud{
      float: inline-end;
  }
+
+div#cont-img {
+    width: 50px;
+    margin-right: 3vh;
+}
+
+.n-input-group {
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    bottom: 0;
+    align-items: stretch;
+    width: inherit;
+}
