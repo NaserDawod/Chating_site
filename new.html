@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title>Recorder App</title>
+    
+</head>
+<h2>Recorder App</h2>
+<p>
+  <button type="button" id="record">Record</button>
+  <button type="button" id="stopRecord" disabled>Stop</button>
+</p>
+<p>
+  <audio id=recordedAudio></audio>        
+</p>
+
+<script> 
+  navigator.mediaDevices.getUserMedia({audio:true})
+  .then(stream => {handlerFunction(stream)})
+
+  function handlerFunction(stream) {
+    rec = new MediaRecorder(stream);
+    rec.ondataavailable = e => {
+      audioChunks.push(e.data);
+      if (rec.state == "inactive"){
+        let blob = new Blob(audioChunks,{type:'audio/mp3'});
+        recordedAudio.src = URL.createObjectURL(blob);
+        recordedAudio.controls=true;
+        recordedAudio.autoplay=true;
+        sendData(blob)
+        }
+      }
+    }
+  
+  function sendData(data) {}
+    record.onclick = e => {
+      record.disabled = true;
+      record.style.backgroundColor = "blue"
+      stopRecord.disabled=false;
+      audioChunks = [];
+      rec.start();
+      }
+    stopRecord.onclick = e => {
+      record.disabled = false;
+      stop.disabled=true;
+      record.style.backgroundColor = "red"
+      rec.stop();
+      }
+</script>
+
+  <!-- function adduser(){
+    let name = document.getElementById('name').value
+    let nickname = document.getElementById('nickname').value
+    let password = document.getElementById('password').value
+    let repassword = document.getElementById('repassword').value
+    let img = document.getElementById('input_img').files[0]    
+    console.log(check(name, nickname, password, repassword, img))
+    if(!(check(name, nickname, password, repassword, img) === false)){
+    document.getElementById('name').value = ''
+    document.getElementById('nickname').value = ''
+    document.getElementById('password').value = ''
+    document.getElementById('repassword').value = ''
+    document.getElementById('input_img').value = ''
+    users[name] = new user(name, nickname, password, img)
+    console.log(users)
+    // window.location.href="ChatPage.html";
+    }
+} -->
+</html>
