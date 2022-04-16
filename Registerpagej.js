@@ -62,6 +62,7 @@ async function adduser(){
             users[name] = new user(name, nickname, password, img2, type)
             users[name].contactslist = contacts_list
             sessionStorage.setItem("jsArray", JSON.stringify(users[name]))
+            // console.log(users[name])
         }
         reader.readAsDataURL(img)
         window.location="ChatPage.html";

@@ -107,7 +107,7 @@ function readMessage(key){
             str += "<div class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
                         "<div class=\"d-flexw flex-row\">"+
                             "<p>"+
-                                "<audio  id=\"rec-" + i + "\" class=\"aud\"  src=\"\"></audio>"+
+                                "<audio  id=\"rec-" + i + "\" class=\"aud\"  src=\"\" controls></audio>"+
                             "</p>"+
                         "</div>"+
                         "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
@@ -280,7 +280,8 @@ function sendvoice(){
     var today = new Date();
     var time = today.getHours() + ":" + today.getMinutes();
     let name = document.getElementById('contact_name').innerText
-    let str = 'rec-' + contacts_map[name].getmessages().length
+    let cont = curr_user['contactslist'][name]
+    let str = 'vid-' + cont['messages'].length
     elem.innerHTML += "<div class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
                         "<div class=\"d-flexw flex-row\">"+
                             "<p>"+
@@ -303,16 +304,16 @@ function sendvoice(){
         let blob = new Blob(audioChunks,{type:'audio/mp3'});
         let recordedAudio = document.getElementById(str); 
         recordedAudio.src = URL.createObjectURL(blob);
+        cont['messages'].push(new Message(curr_user['name'], time, recordedAudio.src, 'r'))
         recordedAudio.controls=true;
-        recordedAudio.autoplay=true;
+        // recordedAudio.autoplay=true;
         sendData(blob)
         }
       }
     }
-    var recordA = document.getElementById(str)
-    contacts_map[name].addmessage('bhemali', time, recordA, 'r')
-    console.log(recordA.strc)
-    console.log(recordA.strc)
+    // var recordA = document.getElementById(str)
+    // contacts_map[name].addmessage('bhemali', time, recordA, 'r')
+    // cont['messages'].push(new Message(curr_user['name'], time, recordA, 'r'))
 
     document.getElementById(name+'-t').innerText = time
     document.getElementById(name+'-m').innerText = "Voice message"
