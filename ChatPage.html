@@ -34,14 +34,16 @@
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Default file input example</label>
-                        <input class="form-control" type="file" id="upload" accept="image/png, image/jpeg,image/jpg" />
+                        <input class="form-control" onchange="checkUser()" type="file" id="upload" accept="image/png, image/jpeg,image/jpg" />
                         <img id="display-image"  width = 200px src="" />
                     </div>
+                    <p class="message wrong" id="n-exist">this user dosnt exist</p>
+                    <p class="message wrong" id="n-exist2">this user is already in your contacts</p>
                   </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="">Close</button>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="addContact2()">Understood</button>
+              <button type="button" class="btn btn-primary"  onclick="addContact2()">Understood</button>
             </div>
           </div>
         </div>

@@ -362,3 +362,17 @@ div#cont-img {
     align-items: stretch;
     width: inherit;
 }
+
+.message-item {
+    position: relative;
+    max-width: 75%;
+    word-break: break-word;
+}
+
+.wrong {
+    display: none;
+  }
+  .wrong-show {
+    display: block;
+    color: red;
+  }

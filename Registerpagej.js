@@ -1,8 +1,9 @@
 class Contact2{
-    constructor(name, img) {
+    constructor(name, img, t) {
         this.name = name;
         this.img = img;
         this.messages = []
+        this.lastTalk = t
     }
     addmessage(who, time, msg, type){
         this.messages.push(new Messages(who,time,msg, type))
@@ -26,22 +27,63 @@ class Message{
     }
 }
 
-var contacts_list = {'Naser' : new Contact2("Naser", 'images/img1.jpg'),'Hiba' : new Contact2("Hiba", 'images/img2.jpg'),
-                    'Emily Smith' : new Contact2("Emily Smith", 'images/img3.jpg'), 'j3fr' : new Contact2("j3fr", 'images/img4.png'),
-                    'Emily Smith2' : new Contact2("Emily Smith2", 'images/img5.jpg')}
+var Eren_list = {'Naser' : new Contact2("Naser", 'images/img1.jpg', '00:00'),'Hiba' : new Contact2("Hiba", 'images/img2.jpg', '00:00'),
+                    'Nsr' : new Contact2("Nsr", 'images/img8.jpg', '00:00'), 'j3fr' : new Contact2("j3fr", 'images/img4.png', '00:00')}
+
+var Naser_list = {'Eren' : new Contact2("Eren", 'images/img6.jpg', '00:00'),'Hiba' : new Contact2("Hiba", 'images/img2.jpg', '10:38'),
+                    'Nsr' : new Contact2("Nsr", 'images/img8.jpg', '10:38'), 'Naseem' : new Contact2("Naseem", 'images/img4.png', '12:37')}
+
+var Hiba_list = {'Naser' : new Contact2("Naser", 'images/img1.jpg', '10:38'),'Eren' : new Contact2("Eren", 'images/img6.jpg', '00:00'),
+                    'Nsr' : new Contact2("Nsr", 'images/img8.jpg', '00:00'), 'j3fr' : new Contact2("j3fr", 'images/img4.png', '00:00')}
+
+var Nsr_list = {'Naser' : new Contact2("Naser", 'images/img1.jpg', '10:38'),'Naseem' : new Contact2("Naseem", 'images/img3.jpg', '00:00'),
+                    'Hiba' : new Contact2("Hiba", 'images/img2.jpg', '00:00')}
 
 var ml = [new Message('Naser', '12:37', 'hi there can you tell me how the homework in going with you','m'),
         new Message('Naser', '12:37', 'im aleardy 2 weeks into it and its so hard','m')]
-contacts_list['Naser'].messages = ml
 
-let users = {"Emily Smith": new user("Emily Smith", "Emily", "12345","images.jpg"),
-            "James Thomas": new user("James Thomas", "James", "12345","images.jpg"),
-            "Sarah Smith": new user("Sarah Smith", "Sarah", "12345","images.jpg"),
-            "David Smith": new user("David Smith", "David", "12345","images.jpg"),
-            "Robert Thomas": new user("Robert Thomas", "Robert", "12345","images.jpg") }
+// var ml2 = [new Message('Nsr', '14:57', 'are you coming to class today','m'),
+//         new Message('Naser', '14:58', 'yse','m')]
 
+var ml3 = [new Message('Naser', '10:38', 'did you finish the homework ?','m')]
+
+var ml4 = [new Message('Eren', '12:37', 'wanna free the world together?','m'),
+        new Message('Naser', '12:37', 'what!!','m')]
+
+Hiba_list['Naser'].messages = ml3
+Nsr_list['Naser'].messages = ml3
+
+Naser_list['Naseem'].messages = ml
+// Naseem_list['Naser'] = ml
+
+Naser_list['Nsr'].messages = ml3
+Naser_list['Hiba'].messages = ml3
+
+Eren_list['Naser'].messages = ml4
+Naser_list['Eren'].messages = ml4
+
+var users = {"Naser": new user("Naser", "naser", "12345","images/img1.jpg"),
+            "Hiba": new user("Hiba", "Hiba", "12345","images/img2.jpg"),
+            "j3fr": new user("j3fr", "j3fr", "12345","images/img4.png"),
+            "Nsr": new user("Nsr", "Nsr", "12345","images/img8.png"),
+            "Naseem": new user("Naseem", "Naseem", "12345","images/img3.jpg"),
+            "Eren": new user("Eren", "Eren", "12345","images/img6.jpg"),
+            "Emily Smith": new user("Emily Smith", "Emily Smith", "12345","images/img5.jpg") }
+
+users['Naser'].contactslist = Naser_list
+users["Hiba"].contactslist = Hiba_list
+users["Nsr"].contactslist = Nsr_list
+users["Eren"].contactslist = Eren_list
+
+function loadData() {
+    if(sessionStorage.getItem("users") !== null) {
+        users = JSON.parse(sessionStorage.getItem("users"));
+        console.log(users)
+    }
+}
 
 async function adduser(){
+
     let name = document.getElementById('name').value
     let nickname = document.getElementById('nickname').value
     let password = document.getElementById('password').value
@@ -58,7 +100,8 @@ async function adduser(){
         reader.onloadend = function(e) {
             base64data = e.target.result
             users[name] = new user(name, nickname, password, base64data)
-            users[name].contactslist = contacts_list
+            users[name].contactslist = {'Naser' : new Contact2("Naser", 'images/img1.jpg', '00:00'),'Hiba' : new Contact2("Hiba", 'images/img2.jpg', '00:00'),
+                                        'Nsr' : new Contact2("Nsr", 'images/img8.jpg', '00:00')}
             sessionStorage.setItem("jsArray", JSON.stringify(users))
             sessionStorage.setItem("temp", JSON.stringify(name))
         }
