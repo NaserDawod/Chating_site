@@ -9,11 +9,11 @@ class Contact2{
     }
 }
 class user{
-    constructor(name, nickname, password, img, type){
+    constructor(name, nickname, password, img){
         this.name = name
         this.nickname = nickname
         this.password = password
-        this.img = {'img' : img , 'type' : type}
+        this.img = img
         this.contactslist = []
     }
 }
@@ -53,16 +53,14 @@ async function adduser(){
         document.getElementById('password').value = ''
         document.getElementById('repassword').value = ''
         document.getElementById('input_img').value = ''
-        var type = img.type
         var base64data
         var reader = new FileReader();
-        reader.onloadend = function() {
-            base64data = reader.result;
-            var img2 = base64data.split(',')[1]
-            users[name] = new user(name, nickname, password, img2, type)
+        reader.onloadend = function(e) {
+            base64data = e.target.result
+            users[name] = new user(name, nickname, password, base64data)
             users[name].contactslist = contacts_list
-            sessionStorage.setItem("jsArray", JSON.stringify(users[name]))
-            // console.log(users[name])
+            sessionStorage.setItem("jsArray", JSON.stringify(users))
+            sessionStorage.setItem("temp", JSON.stringify(name))
         }
         reader.readAsDataURL(img)
         window.location="ChatPage.html";

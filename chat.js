@@ -3,16 +3,8 @@
 var curr_user
 function takeUser() {
     const usern = JSON.parse(sessionStorage.getItem("jsArray"));
-    console.log(usern)
-    const byteCharacters = atob(usern['img']['img']);
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-    const byteArray = new Uint8Array(byteNumbers);
-    const blob = new Blob([byteArray], {type: usern['img']['type']});
-    usern['img'] = blob
-    curr_user = usern
+    const name = JSON.parse(sessionStorage.getItem("temp"));
+    curr_user = usern[name]
 }
 
 function printUser() {
@@ -23,11 +15,7 @@ function printUser() {
                     "<path d='M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z'/>" +
                     "<path fill-rule='evenodd' d='M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z'/>" +
                     "</svg>"
-    var reader = new FileReader();
-    reader.onload = function(e) {
-        document.getElementById('user-img').src = e.target.result;
-    }
-    reader.readAsDataURL(curr_user['img']);
+    document.getElementById('user-img').src = curr_user['img']
 }
 
 function printContacts2() {
@@ -142,7 +130,6 @@ function showMessages2(key){
                             "</div>" +
                         "</span>" +
                     "</div>"
-    printImages2(key)
 }
 
 function readMessage2(key){
@@ -186,7 +173,7 @@ function readMessage2(key){
         }else if(msg.type === 'v'){
             str += "<div id='vid'class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
                         "<video width=\"320\" controls id='vid-" + i + "'>" +
-                            "<source id=\"video-source\" src=\"splashVideo\">" +
+                            "<source id=\"video-source\" src=\"" + msg.msg + "\">" +
                         "</video>" +
                         "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
                             msg.time +
@@ -210,19 +197,6 @@ function readMessage2(key){
         i++
     });
     return str
-}
-
-function printImages2(name){
-    var searchEles = document.getElementById("chat_p").children;
-    for(var i = 0; i < searchEles.length; i++) {
-        if (searchEles[i].id === 'vid'){
-            var vid = curr_user['contactslist'][name]['messages'][i].msg
-            let url = URL.createObjectURL(vid)
-            let str = 'vid-' + i
-            let video = document.querySelector("#" + str);
-            video.setAttribute("src", url)
-        }
-    }
 }
 
 function sendMessage2() {
@@ -268,7 +242,6 @@ function sendImage2(){
                             "</div>"+
                         "</div>"
     var image = document.getElementById("input_img").files[0];
-    // cont['messages'].push(new Message(curr_user['name'], time, image, 'i'))
     var reader = new FileReader();
 
     document.getElementById(name+'-t').innerText = time
@@ -300,9 +273,9 @@ function sendVid2() {
                         "</div>"
 
     var vid = document.getElementById("input_vid").files[0];
-    cont['messages'].push(new Message(curr_user['name'], time, vid, 'v'))
     document.getElementById("input_vid").value = ''
     let url = URL.createObjectURL(vid)
+    cont['messages'].push(new Message(curr_user['name'], time, url, 'v'))
     let video = document.querySelector("#" + str);
     video.setAttribute("src", url)
 }
