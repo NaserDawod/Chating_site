@@ -32,11 +32,11 @@
                       <label for="recipient-name" class="col-form-label">Username:</label>
                       <input type="text" class="form-control" id="Username" onfocus="this.value='';">
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="formFile" class="form-label">Default file input example</label>
                         <input class="form-control" onchange="checkUser()" type="file" id="upload" accept="image/png, image/jpeg,image/jpg" />
                         <img id="display-image"  width = 200px src="" />
-                    </div>
+                    </div> -->
                     <p class="message wrong" id="n-exist">this user dosnt exist</p>
                     <p class="message wrong" id="n-exist2">this user is already in your contacts</p>
                   </form>
@@ -60,7 +60,6 @@
                     <div class="mb-3">
                         <label for="formFile" class="form-label"></label>
                         <input class="form-control" type="file" id="input_img" accept="image/png, image/jpeg,image/jpg" />
-                        <!-- <img id="input_img"  width = 200px src="" /> -->
                     </div>
                   </form>
             </div>
@@ -82,7 +81,6 @@
                     <div class="mb-3">
                         <label for="formFile" class="form-label"></label>
                         <input class="form-control" type="file" id="input_vid" accept="Video/*" />
-                        <!-- <img id="input_img"  width = 200px src="" /> -->
                     </div>
                   </form>
             </div>
@@ -112,10 +110,21 @@
                   </form>
             </div>
             <div class="modal-footer">
-              <!-- onclick="sendvoice()" -->
               <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >send</button>
             </div>
           </div>
+        </div>
+    </div>
+    <div class="modal fade" id="showimg-temp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="" id="img-t" width="400">
+                </div>
+            </div>
         </div>
     </div>
     

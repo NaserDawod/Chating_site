@@ -6,6 +6,7 @@ function takeUser() {
     const usern = JSON.parse(sessionStorage.getItem("jsArray"));
     const name = JSON.parse(sessionStorage.getItem("temp"));
     allusers = usern
+    console.log(allusers)
     curr_user = usern[name]
 }
 
@@ -141,7 +142,7 @@ function showMessages2(key){
                                     "</div>"+
                                 "</div>"+
                             "</button>"+
-                            "<input type=\"text\" class=\"form-control\" aria-label=\"Amount (to the nearest dollar)\" placeholder=\"Type a message\" id=\"typem\">" +
+                            "<input  type=\"text\" class=\"form-control\" aria-label=\"Amount (to the nearest dollar)\" placeholder=\"Type a message\" id=\"typem\">" +
                             "<div onclick=\"sendMessage2()\">"+
                                 "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-send-fill\" viewBox=\"0 0 16 16\">"+
                                     "<path d=\"M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z\">"+
@@ -149,7 +150,15 @@ function showMessages2(key){
                             "</div>" +
                         "</span>" +
                     "</div>"
+    const wage = document.getElementById('typem');
+    wage.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage2(e);
+        }
+    });
 }
+
+
 
 function readMessage2(key){
     let elem = curr_user['contactslist'][key]['messages']
@@ -181,7 +190,7 @@ function readMessage2(key){
             }
         } else if(msg.type === 'i'){
             str += "<div id=\"img\" class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
-                        "<div class=\"d-flex flex-row\">"+
+                        "<div class=\"d-flex flex-row\" data-bs-toggle=\"modal\" data-bs-target=\"#showimg-temp\" onclick='showimg(" + i + ")'>"+
                             "<img src=\"" + msg.msg + "\" alt=\"\" id=\"img-" + i + "\" height=\"150px\">" +
                         "</div>"+
                         "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
@@ -218,6 +227,12 @@ function readMessage2(key){
     return str
 }
 
+function showimg(i){
+    let name = document.getElementById('contact_name').innerText
+    console.log(curr_user['contactslist'][name]['messages'][i].msg)
+    document.getElementById('img-t').src = curr_user['contactslist'][name]['messages'][i].msg
+}
+
 function sendMessage2() {
     let message = document.getElementById('typem').value
     document.getElementById('typem').value = ''
@@ -239,6 +254,7 @@ function sendMessage2() {
                                 "</div>"+
                             "</div>"+
                         "</div>"
+        allusers[name].contactslist[curr_user.name].messages = cont['messages']
         document.getElementById(name+'-t').innerText = time
         document.getElementById(name+'-m').innerText = message
     }
@@ -252,7 +268,7 @@ function sendImage2(){
     let cont = curr_user['contactslist'][name]
     let str = 'img-' + cont['messages'].length
     elem.innerHTML += "<div class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
-                            "<div class=\"d-flex flex-row\">"+
+                            "<div class=\"d-flex flex-row\"data-bs-toggle=\"modal\" data-bs-target=\"#showimg-temp\" onclick='showimg(" + cont['messages'].length + ")'>"+
                                 "<img src=\"\" alt=\"\" id=\"" + str + "\" height=\"150px\">" +
                             "</div>"+
                             "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
@@ -263,6 +279,7 @@ function sendImage2(){
     var image = document.getElementById("input_img").files[0];
     var reader = new FileReader();
 
+    allusers[name].contactslist[curr_user.name].messages = cont['messages']
     document.getElementById(name+'-t').innerText = time
     document.getElementById(name+'-m').innerText = "image"
 
