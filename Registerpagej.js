@@ -15,7 +15,7 @@ class user{
         this.nickname = nickname
         this.password = password
         this.img = img
-        this.contactslist = []
+        this.contactslist = {}
     }
 }
 class Message{
@@ -82,8 +82,7 @@ function loadData() {
     }
 }
 
-async function adduser(){
-
+function adduser(){
     let name = document.getElementById('name').value
     let nickname = document.getElementById('nickname').value
     let password = document.getElementById('password').value
@@ -112,12 +111,14 @@ async function adduser(){
 
 function check(name, nickname, password, repassword, img){
     if(name.length === 0){
-        // let elem = document.getElementById("bhem-m4")
-        // elem.setAttribute("class", 'wrong-show')
+        let elem = document.getElementById("bhem-m4")
+        elem.setAttribute("class", 'wrong-show')
         return false
     }
     for (const [key, value] of Object.entries(users)) {
          if(name === value.name){
+            let elem = document.getElementById("bhem-m2")
+            elem.setAttribute("class", 'wrong-show')
             return false
         }
     }
@@ -125,10 +126,14 @@ function check(name, nickname, password, repassword, img){
         return false
     }
 
-    if(password.length === 0){
+    if(password.length < 5 || password.length > 12){
+        let elem = document.getElementById("bhem-m5")
+        elem.setAttribute("class", 'wrong-show')
         return false
     }
     if(password !== repassword){
+        let elem = document.getElementById("bhem-m3")
+        elem.setAttribute("class", 'wrong-show')
         return false
     }
     return true

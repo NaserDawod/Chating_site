@@ -305,6 +305,7 @@ function sendvoice(){
         let recordedAudio = document.getElementById(str); 
         recordedAudio.src = URL.createObjectURL(blob);
         cont['messages'].push(new Message(curr_user['name'], time, recordedAudio.src, 'r'))
+        allusers[name].contactslist[curr_user.name].messages = cont['messages']
         recordedAudio.controls=true;
         // recordedAudio.autoplay=true;
         sendData(blob)

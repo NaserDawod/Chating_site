@@ -49,7 +49,7 @@ function printContacts2() {
 
 function addContact2(){
     let name = document.getElementById('Username').value
-    console.log(typeof(users[name]))
+    // console.log(typeof(users[name]))
     if(typeof(allusers[name]) === 'undefined' || name === curr_user.name){
         let elem = document.getElementById("n-exist")
         elem.setAttribute("class", 'wrong-show')
@@ -79,6 +79,7 @@ function addContact2(){
                         "</div>" +
                     "</div>"
     curr_user['contactslist'][name] = new Contact2(name, allusers[name].img, time)
+    allusers[name].contactslist[curr_user.name] = new Contact2(curr_user.name, curr_user.img, time)
 }
 
 function showMessages2(key){
@@ -164,32 +165,28 @@ function readMessage2(key){
     let elem = curr_user['contactslist'][key]['messages']
     let str = ''
     i = 0
+    let side = ''
+    let color = ''
     elem.forEach(msg =>{
+        if(msg.who === key){
+            side = 'start'
+            color = 'bg-white'
+        }else {
+            side = 'end'
+            color = 'greenbackground'
+        }
         if(msg.type === 'm'){
-            if(msg.who === key){ //bhem
-                str+="<div class=\"flex-row d-flex align-self-start self p-1 my-1 mx-3 rounded bg-white shadow-sm message-item\">"+          
-                        "<div class=\"d-flex flex-row\">"+
-                            "<div class=\"body m-1 mr-2\">"+ msg.msg +"</div>"+
-                            "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
-                                msg.time +
-                                "<i class=\"fas fa-check-circle\"></i>"+
-                            "</div>"+
+            str+="<div class=\"flex-row d-flex align-self-" + side + " self p-1 my-1 mx-3 rounded shadow-sm message-item " + color + "\">"+          
+                    "<div class=\"d-flex flex-row\">"+
+                        "<div class=\"body m-1 mr-2\">"+ msg.msg +"</div>"+
+                        "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
+                            msg.time +
+                            "<i class=\"fas fa-check-circle\"></i>"+
                         "</div>"+
-                    "</div>"
-            }
-            else{ //a7na
-                str+="<div class=\"flex-row d-flex align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
-                        "<div class=\"d-flex flex-row\">"+
-                            "<div class=\"body m-1 mr-2\">"+ msg.msg +"</div>"+
-                            "<div class=\"time ml-auto small text-right flex-shrink-0 align-self-end text-muted\" style=\"width:75px;\">"+
-                                msg.time +
-                                "<i class=\"fas fa-check-circle\"></i>"+
-                            "</div>"+
-                        "</div>"+
-                    "</div>"
-            }
+                    "</div>"+
+                "</div>"
         } else if(msg.type === 'i'){
-            str += "<div id=\"img\" class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+            str += "<div id=\"img\" class=\"align-self-" + side + " self p-1 my-1 mx-3 rounded shadow-sm message-item " + color + "\">"+          
                         "<div class=\"d-flex flex-row\" data-bs-toggle=\"modal\" data-bs-target=\"#showimg-temp\" onclick='showimg(" + i + ")'>"+
                             "<img src=\"" + msg.msg + "\" alt=\"\" id=\"img-" + i + "\" height=\"150px\">" +
                         "</div>"+
@@ -199,7 +196,7 @@ function readMessage2(key){
                             "</div>"+
                     "</div>"
         }else if(msg.type === 'v'){
-            str += "<div id='vid'class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+            str += "<div id='vid'class=\"align-self-" + side + " self p-1 my-1 mx-3 rounded shadow-sm message-item " + color + "\">"+          
                         "<video width=\"320\" controls id='vid-" + i + "'>" +
                             "<source id=\"video-source\" src=\"" + msg.msg + "\">" +
                         "</video>" +
@@ -210,7 +207,7 @@ function readMessage2(key){
                     "</div>"
         }
         else if(msg.type === 'r'){
-            str += "<div class=\"align-self-end self p-1 my-1 mx-3 rounded shadow-sm message-item greenbackground\">"+          
+            str += "<div class=\"align-self-" + side + " self p-1 my-1 mx-3 rounded shadow-sm message-item " + color + "\">"+          
                         "<div class=\"d-flexw flex-row\">"+
                             "<p>"+
                                 "<audio  id=\"rec-" + i + "\" class=\"aud\" src=\"" + msg.msg + "\" controls></audio>"+
@@ -229,7 +226,6 @@ function readMessage2(key){
 
 function showimg(i){
     let name = document.getElementById('contact_name').innerText
-    console.log(curr_user['contactslist'][name]['messages'][i].msg)
     document.getElementById('img-t').src = curr_user['contactslist'][name]['messages'][i].msg
 }
 
@@ -309,6 +305,7 @@ function sendVid2() {
                         "</div>"
 
     var vid = document.getElementById("input_vid").files[0];
+    allusers[name].contactslist[curr_user.name].messages = cont['messages']
     document.getElementById("input_vid").value = ''
     let url = URL.createObjectURL(vid)
     cont['messages'].push(new Message(curr_user['name'], time, url, 'v'))
