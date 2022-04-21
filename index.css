@@ -137,6 +137,7 @@ padding: 10px;
     min-height: 80.5vh;
 }
 
+
 .chatt {
 max-width: fit-content;
 max-height: max-content;
@@ -295,11 +296,6 @@ div#search {
     border-bottom: 0.1vh solid lightgray;
 }
 
-.inter-back {
-    flex: 1!important;
-    background:url(homeImage.png);
-    /* min-height: 80.5vh; */
-}
 .dropup2 {
     border: none;
   }

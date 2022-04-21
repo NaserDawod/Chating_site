@@ -65,7 +65,7 @@ Naser_list['Eren'].messages = ml4
 var users = {"Naser": new user("Naser", "naser", "12345","images/img1.jpg"),
             "Hiba": new user("Hiba", "Hiba", "12345","images/img2.jpg"),
             "j3fr": new user("j3fr", "j3fr", "12345","images/img4.png"),
-            "Nsr": new user("Nsr", "Nsr", "12345","images/img8.png"),
+            "Nsr": new user("Nsr", "Nsr", "12345","images/img8.jpg"),
             "Naseem": new user("Naseem", "Naseem", "12345","images/img3.jpg"),
             "Eren": new user("Eren", "Eren", "12345","images/img6.jpg"),
             "Emily Smith": new user("Emily Smith", "Emily Smith", "12345","images/img5.jpg") }
@@ -76,8 +76,9 @@ users["Nsr"].contactslist = Nsr_list
 users["Eren"].contactslist = Eren_list
 
 function loadData() {
-    if(sessionStorage.getItem("users") !== null) {
-        users = JSON.parse(sessionStorage.getItem("users"));
+    console.log('fsdfd')
+    if(sessionStorage.getItem("jsArray") !== null) {
+        users = JSON.parse(sessionStorage.getItem("jsArray"));
         console.log(users)
     }
 }
@@ -99,13 +100,13 @@ function adduser(){
         reader.onloadend = function(e) {
             base64data = e.target.result
             users[name] = new user(name, nickname, password, base64data)
-            users[name].contactslist = {'Naser' : new Contact2("Naser", 'images/img1.jpg', '00:00'),'Hiba' : new Contact2("Hiba", 'images/img2.jpg', '00:00'),
-                                        'Nsr' : new Contact2("Nsr", 'images/img8.jpg', '00:00')}
+            console.log(users)
             sessionStorage.setItem("jsArray", JSON.stringify(users))
             sessionStorage.setItem("temp", JSON.stringify(name))
         }
         reader.readAsDataURL(img)
-        window.location="ChatPage.html";
+        alert("account created successfully you can login now")
+        // window.location="ChatPage.html";
     }
 }
 
@@ -133,6 +134,11 @@ function check(name, nickname, password, repassword, img){
     }
     if(password !== repassword){
         let elem = document.getElementById("bhem-m3")
+        elem.setAttribute("class", 'wrong-show')
+        return false
+    }
+    if(/\d/.test(password) == 0){
+        let elem = document.getElementById("bhem-m7")
         elem.setAttribute("class", 'wrong-show')
         return false
     }

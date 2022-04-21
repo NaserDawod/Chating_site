@@ -11,8 +11,8 @@ function takeUser() {
 }
 
 function logout() {
-    sessionStorage.setItem("users", JSON.stringify(allusers))
-    window.location="Signup2.html";
+    sessionStorage.setItem("jsArray", JSON.stringify(allusers))
+    window.location="Login2.html";
 }
 
 function printUser() {
@@ -31,14 +31,21 @@ function printUser() {
 }
 
 function printContacts2() {
+    let message = ''
     for (const [key, cont] of Object.entries(curr_user['contactslist'])) {
+        let n = cont.messages.length
+        if(n > 0){
+            message = cont.messages[n-1].msg.substr(0,20) + '...'
+        }else {
+            message = ''
+        }
         document.write("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages2("+ "\'" + cont['name'] + "\'" +")\">" + 
                             "<div id='cont-img'>" + 
                             "<img src=\"" + cont['img'] + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:50px; max-width: 55px;\">" +
                             "</div>" +
                             "<div class=\"w-50\">" +
                                 "<h5 class=\"mb-1\">" + cont['name'] + "</h5>" +
-                                "<p class=\"mb-1\" id=\""+ key +"-m\">message</p>" +
+                                "<p class=\"mb-1\" id=\""+ key +"-m\">" + message +"</p>" +
                             "</div>" +
                             "<div class=\"flex-grow-1 text-right\">" +
                                 "<div class=\"small time\" id=\""+ key +"-t\">" + cont.lastTalk + "</div>" + 
@@ -49,7 +56,6 @@ function printContacts2() {
 
 function addContact2(){
     let name = document.getElementById('Username').value
-    // console.log(typeof(users[name]))
     if(typeof(allusers[name]) === 'undefined' || name === curr_user.name){
         let elem = document.getElementById("n-exist")
         elem.setAttribute("class", 'wrong-show')
@@ -72,7 +78,7 @@ function addContact2(){
                         "</div>" +                    
                         "<div class=\"w-50\">" +
                             "<h5 class=\"mb-1\">" + name + "</h5>" +
-                            "<p class=\"mb-1\" id=\""+ name +"-m\">message</p>" +
+                            "<p class=\"mb-1\" id=\""+ name +"-m\"></p>" +
                         "</div>" +
                         "<div class=\"flex-grow-1 text-right\">" +
                             "<div class=\"small time\" id=\""+ name +"-t\">" + time + "</div>" + 
@@ -80,6 +86,35 @@ function addContact2(){
                     "</div>"
     curr_user['contactslist'][name] = new Contact2(name, allusers[name].img, time)
     allusers[name].contactslist[curr_user.name] = new Contact2(curr_user.name, curr_user.img, time)
+}
+
+function search(){
+    let str = ''
+    let search = document.getElementById('search-bar').value
+    for (const [key, cont] of Object.entries(curr_user['contactslist'])) {
+        if(key.includes(search)){
+            let n = cont.messages.length
+            if(n > 0){
+                message = cont.messages[n-1].msg.substr(0,20) + '...'
+            }else {
+                message = ''
+            }
+            str += ("<div class=\"chat-list-item d-flex flex-row w-100 p-2 border-bottom\" onclick=\"showMessages2("+ "\'" + cont['name'] + "\'" +")\">" + 
+                                "<div id='cont-img'>" + 
+                                "<img src=\"" + cont['img'] + "\" alt=\"Profile Photo\" class=\"img-fluid rounded-circle mr-2\" style=\"height:50px; max-width: 55px;\">" +
+                                "</div>" +
+                                "<div class=\"w-50\">" +
+                                    "<h5 class=\"mb-1\">" + cont['name'] + "</h5>" +
+                                    "<p class=\"mb-1\" id=\""+ key +"-m\">" + message +"</p>" +
+                                "</div>" +
+                                "<div class=\"flex-grow-1 text-right\">" +
+                                    "<div class=\"small time\" id=\""+ key +"-t\">" + cont.lastTalk + "</div>" + 
+                                "</div>" +
+                            "</div>")
+        }
+    }
+    let elem = document.getElementById('contact_div')
+    elem.innerHTML = str
 }
 
 function showMessages2(key){
@@ -252,7 +287,7 @@ function sendMessage2() {
                         "</div>"
         allusers[name].contactslist[curr_user.name].messages = cont['messages']
         document.getElementById(name+'-t').innerText = time
-        document.getElementById(name+'-m').innerText = message
+        document.getElementById(name+'-m').innerText = message.substr(0,20)
     }
 }
 
