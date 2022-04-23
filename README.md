@@ -14,22 +14,22 @@ name:j3fr , password:12345
 
 when you login you can see the main page with your contacts names(if they exist) or you could add new contacts
 
-![alt text](https://github.com/[NaserDawod]/[WhatsApp_Demo]/blob/[main]/siteimg/mainpage.png?raw=true)
+![alt text](https://github.com/NaserDawod/WhatsApp_Demo/blob/main/siteimg/mainpage.png?raw=true)
 
 you can add new contacts(they need to be signed into the site) or logout from the account if you want via these buttons
 
-![alt text](https://github.com/[NaserDawod]/[WhatsApp_Demo]/blob/[main]/siteimg/logout_add_btn.png?raw=true)
+![alt text](https://github.com/NaserDawod/WhatsApp_Demo/blob/main/siteimg/logout_add_btn.png?raw=true)
 
 you can start texting people by clicing on there name in the contact list or to search for them in the search bar
 
-![alt text](https://github.com/[NaserDawod]/[WhatsApp_Demo]/blob/[main]/siteimg/search.png?raw=true)
+![alt text](https://github.com/NaserDawod/WhatsApp_Demo/blob/main/siteimg/search.png?raw=true)
 
 after choosing a contact the chat page will be oppend and you can start texting now
 
-![alt text](https://github.com/[NaserDawod]/[WhatsApp_Demo]/blob/[main]/siteimg/chatPage.png?raw=true)
+![alt text](https://github.com/NaserDawod/WhatsApp_Demo/blob/main/siteimg/chatPage.png?raw=true)
 
 and also there is ability to send images/videos/voice recordings
 
-![alt text](https://github.com/[NaserDawod]/[WhatsApp_Demo]/blob/[main]/siteimg/files.png?raw=true)
+![alt text](https://github.com/NaserDawod/WhatsApp_Demo/blob/main/siteimg/files.png?raw=true)
 
 and to mention you all the messages that you sent and recive will be saved when loging out (sadly videos are not supported yet)
