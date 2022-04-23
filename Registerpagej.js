@@ -76,7 +76,6 @@ users["Nsr"].contactslist = Nsr_list
 users["Eren"].contactslist = Eren_list
 
 function loadData() {
-    console.log('fsdfd')
     if(sessionStorage.getItem("jsArray") !== null) {
         users = JSON.parse(sessionStorage.getItem("jsArray"));
         console.log(users)
@@ -105,8 +104,14 @@ function adduser(){
             sessionStorage.setItem("temp", JSON.stringify(name))
         }
         reader.readAsDataURL(img)
-        alert("account created successfully you can login now")
+        console.log('asdasds')
+        // alert("account created successfully you can login now")
+        if (window.confirm('account created successfully you can login now by clicking ok')){
+            // window.open('Login2.html', '_blank');
+            window.location="Login2.html";
+        };
         // window.location="ChatPage.html";
+
     }
 }
 

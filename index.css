@@ -367,8 +367,26 @@ div#cont-img {
 
 .wrong {
     display: none;
-  }
-  .wrong-show {
+}
+.wrong-show {
     display: block;
     color: red;
-  }
+}
+
+.home {
+    background-color: #50ff56;
+    overflow-x: hidden;
+}
+.centert {
+    margin-left: 40%;
+}
+
+.centert2 {
+    margin-left: 35%;
+}
+
+.wellcome {
+    max-width: 35%;
+    word-break: break-word;
+    text-align: center;
+}

@@ -24,25 +24,26 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="staticBackdropLabel">Add Contacts</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" onclick="hide()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                      <label for="recipient-name" class="col-form-label">Username:</label>
-                      <input type="text" class="form-control" id="Username" onfocus="this.value='';">
-                    </div>
-                    <!-- <div class="mb-3">
-                        <label for="formFile" class="form-label">Default file input example</label>
-                        <input class="form-control" onchange="checkUser()" type="file" id="upload" accept="image/png, image/jpeg,image/jpg" />
-                        <img id="display-image"  width = 200px src="" />
-                    </div> -->
-                    <p class="message wrong" id="n-exist">this user dosnt exist</p>
-                    <p class="message wrong" id="n-exist2">this user is already in your contacts</p>
-                  </form>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Username:</label>
+                  <input type="text" class="form-control" id="Username" onfocus="this.value='';">
+                </div>
+                <script type="text/javascript">
+                  const wage = document.getElementById('Username');
+                      wage.addEventListener('keydown', (e) => {
+                          if (e.key === 'Enter') {
+                            addContact2();
+                          }
+                      });
+                </script>
+                <p class="message wrong" id="n-exist">this user dosnt exist</p>
+                <p class="message wrong" id="n-exist2">this user is already in your contacts</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="hide()">Close</button>
               <button type="button" class="btn btn-primary"  onclick="addContact2()">Understood</button>
             </div>
           </div>
@@ -152,6 +153,12 @@
 
         </div>
         <div class="col-8 left-pad" id="messages">
+          <div class="row home h-100 align-items-center">
+            <div class="centered">
+              <img class="centert" src="images/whatsback.png" height="170px" alt="">
+              <h4 class="wellcome centert2">Wellcome to whats app web app!! </h4>
+            </div>
+          </div>
         </div>
     </div>
 
