@@ -3,7 +3,7 @@ to run the site you only need to download the code and extract it then lunch it 
 
 to create a new account via signup you need to choose good name and password(length 5-12 contains letters) and choose a profile photo
 
-![alt text](https://github.com/[NaserDawod]/[WhatsApp_Demo]/blob/[main]/siteimg/signup.jpg?raw=true)
+![alt text](https://github.com/NaserDawod/WhatsApp_Demo/blob/main/siteimg/signup.jpg?raw=true)
 
 also there is some created accounts that you could use here some:
 name:Naser , password:12345
