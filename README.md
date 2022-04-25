@@ -14,7 +14,7 @@ name:j3fr , password:12345
 
 when you login you can see the main page with your contacts names(if they exist) or you could add new contacts
 
-![alt text](https://github.com/NaserDawod/WhatsApp_Demo/blob/main/siteimg/mainpage.png?raw=true)
+![alt text](https://github.com/NaserDawod/WhatsApp_Demo/blob/main/siteimg/mainPage.png?raw=true)
 
 you can add new contacts(they need to be signed into the site) or logout from the account if you want via these buttons
 
