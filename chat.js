@@ -10,6 +10,14 @@ function takeUser() {
 }
 
 function logout() {
+    for (const [key, cont] of Object.entries(curr_user['contactslist'])) {
+        let arr = cont.messages
+        for (let i = 0; i < arr.length; i++) {
+            if(arr[i].type =='v'){
+                arr.splice(i,i)
+            }
+        }
+    }
     sessionStorage.setItem("jsArray", JSON.stringify(allusers))
     window.location="Login2.html";
 }
@@ -35,6 +43,11 @@ function printContacts2() {
         let n = cont.messages.length
         if(n > 0){
             message = cont.messages[n-1].msg.substr(0,20) + '...'
+            if (cont.messages[n-1].type === 'i'){
+                message = 'Imgae'
+            } else if(cont.messages[n-1].type === 'r') {
+                message = 'Voice message'
+            }
         }else {
             message = ''
         }
@@ -348,7 +361,7 @@ function sendVid2() {
                         "</div>"
 
     var vid = document.getElementById("input_vid").files[0];
-    allusers[name].contactslist[curr_user.name].messages = cont['messages']
+    // allusers[name].contactslist[curr_user.name].messages = cont['messages']
     document.getElementById("input_vid").value = ''
     let url = URL.createObjectURL(vid)
     cont['messages'].push(new Message(curr_user['name'], time, url, 'v'))
