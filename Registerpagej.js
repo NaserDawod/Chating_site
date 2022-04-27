@@ -45,18 +45,28 @@ var ml = [new Message('Naser', '12:37', 'hi there can you tell me how the homewo
 // var ml2 = [new Message('Nsr', '14:57', 'are you coming to class today','m'),
 //         new Message('Naser', '14:58', 'yse','m')]
 
-var ml3 = [new Message('Naser', '10:38', 'did you finish the homework ?','m')]
+var ml3 = [new Message('Naser', '10:38', 'did you finish the homework ?','m'),
+        new Message('Hiba', '10:39', 'images/wantimg.png','i'),
+        new Message('Hiba', '10:39', 'no look at this','m'),
+        new Message('Hiba', '10:40', 'they wnat us to add videos and images to the chat i dont know why!','m'),
+        new Message('Naser', '10:41', 'thats wierd what is there problem!!','m')]
+
+var ml5 = [new Message('Naser', '10:38', 'did you finish the homework ?','m'),
+        new Message('Nsr', '10:38', 'no but listen to this','m'),
+        new Message('Nsr', '10:38', 'images/web.m4a','r'),
+        new Message('Naser', '10:38', 'thats good not like this home work','m'),]
 
 var ml4 = [new Message('Eren', '12:37', 'wanna free the world together?','m'),
+        new Message('Eren', '12:37', 'images/Rumbling.mp4','v'),
         new Message('Naser', '12:37', 'what!!','m')]
 
 Hiba_list['Naser'].messages = ml3
-Nsr_list['Naser'].messages = ml3
+Nsr_list['Naser'].messages = ml5
 
 Naser_list['Naseem'].messages = ml
 // Naseem_list['Naser'] = ml
 
-Naser_list['Nsr'].messages = ml3
+Naser_list['Nsr'].messages = ml5
 Naser_list['Hiba'].messages = ml3
 
 Eren_list['Naser'].messages = ml4

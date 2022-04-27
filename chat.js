@@ -359,7 +359,6 @@ function sendVid2() {
                                 "<i class=\"fas fa-check-circle\"></i>"+
                             "</div>"+
                         "</div>"
-
     var vid = document.getElementById("input_vid").files[0];
     // allusers[name].contactslist[curr_user.name].messages = cont['messages']
     document.getElementById("input_vid").value = ''
