@@ -126,7 +126,7 @@ function adduser(){
 }
 
 function check(name, nickname, password, repassword, img){
-    if(name.length === 0){
+    if(name.length <= 3){
         let elem = document.getElementById("bhem-m4")
         elem.setAttribute("class", 'wrong-show')
         return false
@@ -138,7 +138,9 @@ function check(name, nickname, password, repassword, img){
             return false
         }
     }
-    if(nickname.length === 0){
+    if(nickname.length <= 3){
+        let elem = document.getElementById("bhem-m9")
+        elem.setAttribute("class", 'wrong-show')
         return false
     }
 
