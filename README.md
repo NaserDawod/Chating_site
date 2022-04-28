@@ -6,11 +6,12 @@ to create a new account via signup you need to choose good name and password(len
 ![alt text](https://github.com/NaserDawod/WhatsApp_Demo/blob/main/siteimg/signup.png?raw=true)
 
 also there is some created accounts that you could use here some:
-name:Naser , password:12345
-name:Hiba , password:12345
-name:Nsr , password:12345
-name:Naseem , password:12345
-name:j3fr , password:12345
+name: Naser , password: 12345  --> main account to use
+name: Hiba , password: 12345
+name: Nsr , password: 12345
+name: Naseem , password: 12345
+name: j3fr , password: 12345
+name: Eren , password: 12345
 
 when you login you can see the main page with your contacts names(if they exist) or you could add new contacts
 
