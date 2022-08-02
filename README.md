@@ -1,6 +1,6 @@
 # Chating_site
 
-FrontEnd of a chating website for sending all type of messages, created by me(Naser) and my partner Heba for a university project
+FrontEnd of a chating website for sending all type of messages, created by me(Naser) and my partner Heba for a university project. </br>
 to run the site you only need to download the code and extract it then lunch it via Login2.html or Signup2.html then you can login into your account and start using the site
 
 to create a new account via signup you need to choose good name and password(length 5-12 contains letters) and choose a profile photo
